@@ -1,0 +1,45 @@
+<div data-height="cover" class="caption bottom-0">
+    <div class="caption-center">
+
+        <div class="content left-40 right-40 bg-white round-medium shadow-huge">
+            <div class="content">
+
+                <h1 class="color-black font-30 top-30">회원가입</h1>
+                <span class="under-heading color-highlight font-10 bold">아이디 / 이메일 / 비밀번호를 입력하세요</span>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+
+                <div class="input-style input-style-1 input-required top-20">
+                    <span>이름</span>
+                    <em>(필수)</em>
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "이름"%>
+                </div>
+                <div class="input-style input-style-1 input-required">
+                    <span>이메일</span>
+                    <em>(필수)</em>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "이메일" %>
+                </div>
+                <div class="input-style input-style-1 input-required">
+                    <span>비밀번호</span>
+                    <em>(필수)</em>
+                    <%= f.password_field :password, autocomplete: "new-password", placeholder: "비밀번호 확인"%>
+                </div>
+                <div class="input-style input-style-1 input-required">
+                    <span>비밀번호 확인</span>
+                    <em>(필수)</em>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "비밀번호 확인" %>
+                </div>
+                <div class="clear"></div>
+
+                <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
+                  <%= f.submit "회원가입" , style: "color: white; background: #F6BB42"%>
+                </div>
+                <% end %>
+                <%= render "devise/shared/links" %>
+            </div>
+        </div>
+    </div>
+
+    <div class="caption-overlay opacity-70"></div>
+    <div class="caption-bg bg-login"></div>
+</div>
