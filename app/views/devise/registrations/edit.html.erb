@@ -1,43 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="page-content header-clear-large">
+    <div class="content left-30 right-30">
+        <h1 class="font-30">사용자 정보 수정</h1>
+        <h2 class="font-16 under-heading color-highlight bold">사용자 정보를 수정해주세요</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <div class="input-style input-style-1 input-required top-20">
+              <span>이름</span>
+              <em>(필수)</em>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "이름"%>
+          </div>
+          <div class="input-style input-style-1 input-required">
+              <span>이메일</span>
+              <em>(필수)</em>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "이메일" %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+          <% end %>
+          <div class="input-style input-style-1 input-required">
+              <span>새 비밀번호</span><strong>현재 비밀번호를 변경하려는 경우 입력</strong>
+              <em>(선택)</em>
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "새 비밀번호"%>
+          </div>
+          <div class="input-style input-style-1 input-required">
+              <span>새 비밀번호 확인</span>
+              <em>(선택)</em>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "새 비밀번호 확인" %>
+          </div>
+          <div class="input-style input-style-1 input-required">
+              <span>현재 비밀번호</span><strong>정보 수정하는 경우 입력 필수</strong>
+              <em>(선택)</em>
+              <%= f.password_field :current_password, autocomplete: "new-password", placeholder: "비밀번호 입력"%>
+          </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <div class="clear"></div>
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
+          <%= f.submit "회원가입" , style: "color: white; background: #F6BB42"%>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+        <h3><%= t('.cancel_my_account') %></h3>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <p><%= t('.unhappy') %><br>
+          <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "button shadow-huge button-m button-round-small bg-red1-light" %></p>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+        <%= link_to t('devise.shared.links.back'), :back, class: "back-button button button-full button-m round-small shadow-huge bg-highlight top-30" %>
+        <% end %>
+    </div>
+</div>

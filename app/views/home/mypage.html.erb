@@ -2,25 +2,25 @@
     <div class="profile-left">
         <h1><%= current_user.name %><i class="fa fa-check-circle color-highlight"></i></h1>
         <p>
-            Karla Black is a name used when you generate a text with an annonymous name.
+            <%= current_user.email%>
         </p>
-        <a href="#" class="color-theme">1,513 <span> Followers</span></a>
-        <a href="#" class="color-theme">342  <span>Following</span></a>
+        <%# <a href="#" class="color-theme">1,513 <span> Followers</span></a>
+        <a href="#" class="color-theme">342  <span>Following</span></a> %>
         <div class="clear"></div>
     </div>
     <div class="profile-right">
         <a href="#">
-            <img src="images/empty.png" data-src="images/pictures/0s.png" class="preload-image shadow-large">
+            <img src="/images/cover_02.jpeg" data-src="/images/cover_02.jpeg" class="preload-image shadow-large">
         </a>
     </div>
 </div>
 
 <div class="content bottom-0">
     <div class="one-half">
-        <a href="#" class="button button-xs round-small shadow-large bg-highlight button-full bottom-30">Follow</a>
+        <a href="#" class="button button-xs round-small shadow-large bg-highlight button-full bottom-30">메인</a>
     </div>
     <div class="one-half last-column">
-        <a href="#" class="button button-xs round-small shadow-large button-border button-full border-highlight color-highlight bg-transparent bottom-0">Send Message</a>
+        <%= link_to "회원 정보 수정", edit_user_registration_path(current_user.id), class: "button button-xs round-small shadow-large button-border button-full border-highlight color-highlight bg-transparent bottom-0"%>
     </div>
     <div class="clear"></div>
 </div>
