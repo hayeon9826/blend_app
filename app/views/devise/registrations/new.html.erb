@@ -20,6 +20,11 @@
                     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "이메일" %>
                 </div>
                 <div class="input-style input-style-1 input-required">
+                    <span>가입 유형 (User type)</span>
+                    <em>(필수)</em>
+                    <%= f.select :user_type, User.user_types.map {|key, value| [key.humanize, key] }%>
+                </div>
+                <div class="input-style input-style-1 input-required">
                     <span>비밀번호</span>
                     <em>(필수)</em>
                     <%= f.password_field :password, autocomplete: "new-password", placeholder: "비밀번호 확인"%>

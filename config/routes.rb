@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
+
+  devise_for :users
+
   get '/index' => 'home#index', as: :index
   get '/mypage' => "home#mypage", as: :mypage
 
