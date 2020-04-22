@@ -1,45 +1,86 @@
 <div class="divider divider-margins"></div>
+<% if current_user.user_type == "Learner" %>
 <div class="content bottom-0">
-    <h6 class="uppercase">전체 메뉴</h6>
+    <h6 class="uppercase">Main Page</h6>
     <div class="link-list link-list-2 link-list-long-border link-list-icon-bg">
         <a href="/subscription">
             <i class="fa fa-star bg-yellow1-dark round-circle shadow-huge"></i>
-            <span>정기구독 알아보기</span>
-            <strong>커피 구독과 함께 교육 기부를 할 수 있습니다</strong>
+            <span>About blend</span>
+            <strong>Learn, enjoy, improve your chance</strong>
             <i class="fa fa-angle-right"></i>
         </a>
         <a href="/lectures">
             <i class="fa fa-heart bg-red2-dark round-circle shadow-huge"></i>
-            <span>교육 기부 목록</span>
-            <strong>기부 하고 싶은 교육 강의를 찾아보세요</strong>
-            <i class="fa fa-angle-right"></i>
-        </a>
-        <a href="/products">
-            <i class="fa fa-cog bg-blue2-dark round-circle shadow-huge"></i>
-            <span>제품 검색</span>
-            <strong>커피 원두를 검색해보세요</strong>
+            <span>Lectures</span>
+            <strong>Upcoming lectures list</strong>
             <i class="fa fa-angle-right"></i>
         </a>
         <% if current_user%>
           <a href="/mypage">
               <i class="fa fa-camera bg-green1-dark round-circle shadow-huge"></i>
-              <span>마이페이지</span>
-              <strong>구독 관리 및 기부 내역</strong>
+              <span>Mypage</span>
+              <strong>My lectures</strong>
               <i class="fa fa-angle-right"></i>
           </a>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa fa-camera bg-red2-dark round-circle shadow-huge"></i>
-            <span>로그아웃</span>
-            <strong>로그아웃을 원하신다면 클릭하세요</strong>
+            <span>Logout</span>
+            <strong>Click to logout</strong>
             <i class="fa fa-angle-right"></i>
           <% end %>
       <% else %>
         <%= link_to new_user_session_path do %>
           <i class="fa fa-camera bg-green1-dark round-circle shadow-huge"></i>
-          <span>로그인</span>
-          <strong>로그인 및 회원가입</strong>
+          <span>Login</span>
+          <strong>Login or Sign up</strong>
           <i class="fa fa-angle-right"></i>
         <% end %>
       <% end %>
     </div>
 </div>
+<% else %>
+  <div class="content bottom-0">
+      <h6 class="uppercase">전체 메뉴</h6>
+      <div class="link-list link-list-2 link-list-long-border link-list-icon-bg">
+          <a href="/subscription">
+              <i class="fa fa-star bg-yellow1-dark round-circle shadow-huge"></i>
+              <span>정기구독 알아보기</span>
+              <strong>커피 구독과 함께 교육 기부를 할 수 있습니다</strong>
+              <i class="fa fa-angle-right"></i>
+          </a>
+          <a href="/lectures">
+              <i class="fa fa-heart bg-red2-dark round-circle shadow-huge"></i>
+              <span>교육 기부 목록</span>
+              <strong>기부 하고 싶은 교육 강의를 찾아보세요</strong>
+              <i class="fa fa-angle-right"></i>
+          </a>
+          <a href="/products">
+              <i class="fa fa-cog bg-blue2-dark round-circle shadow-huge"></i>
+              <span>제품 검색</span>
+              <strong>커피 원두를 검색해보세요</strong>
+              <i class="fa fa-angle-right"></i>
+          </a>
+          <% if current_user%>
+            <a href="/mypage">
+                <i class="fa fa-camera bg-green1-dark round-circle shadow-huge"></i>
+                <span>마이페이지</span>
+                <strong>구독 관리 및 기부 내역</strong>
+                <i class="fa fa-angle-right"></i>
+            </a>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-camera bg-red2-dark round-circle shadow-huge"></i>
+              <span>로그아웃</span>
+              <strong>로그아웃을 원하신다면 클릭하세요</strong>
+              <i class="fa fa-angle-right"></i>
+            <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <i class="fa fa-camera bg-green1-dark round-circle shadow-huge"></i>
+            <span>로그인</span>
+            <strong>로그인 및 회원가입</strong>
+            <i class="fa fa-angle-right"></i>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

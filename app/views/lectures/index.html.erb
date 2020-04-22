@@ -7,520 +7,286 @@
     <a href="#" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a>
 </div>
         <div class="divider divider-margins"></div>
-        <form autocomplete="false" class="search-box search-color content round-tiny bottom-30">
-            <i class="fa fa-search"></i>
-            <input type="text" placeholder="What are you looking for? ( try all )" data-search>
-            <i class="fa fa-times disabled color-red2-dark"></i>
-        </form>
+        <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
+        <div class="row">
+          <i class="fa fa-search"></i>
+          <%= f.search_field :title_or_address_or_category_cont, placeholder: "강의 제목, 내용, 카테고리를 검색하세요", class: "col-9" %>
+          <i class="fa fa-times disabled color-red2-dark"></i>
+        </div>
+      <% end %>
+      <% if @q.title_or_address_or_category_cont.present? %>
+      <div class="divider divider-margins"></div>
+        <div class="content">
+            <div class="content-title has-icon">
+                <h3><%= @q.title_or_address_or_category_cont %> 검색결과</h3>
+                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+            </div>
+        </div>
+      <% end %>
+      <% @lectures&.each do |p| %>
+        <%= link_to lecture_path(p.id), class: "external" do %>
+          <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+              <div class="caption-top left-15 top-15">
+                  <div class="caption-author-left">
+                      <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+                      <strong><%= p.category %></strong>
+                      <span><%= p.category %></span>
+                  </div>
+              </div>
+
+              <div class="caption-top right-text top-10 right-15">
+                  <span class="color-white ultrabold font-9">더보기</span>
+              </div>
+
+              <div class="caption-bottom left-20 bottom-20">
+                  <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
+                  <h1 class="color-white bolder font-32"><%= p.title %></h1>
+              </div>
+              <div class="caption-overlay bg-black opacity-70"></div>
+              <div class="caption-bg bg-12"></div>
+          </a>
+        <% end %>
+      <% end %>
         <div class="divider divider-margins"></div>
-
-        <a href="#" data-menu="menu-instant-1" data-height="220" class="caption caption-margins round-medium shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">TAP TO VIEW</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">This Card Will Open as a</p>
-                <h1 class="color-white bolder font-32">Modal View</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-11"></div>
-        </a>
-
-        <a href="#" data-menu="menu-instant-2" data-height="220" class="caption caption-margins round-medium shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">TAP TO VIEW</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">This Card Will Open as a</p>
-                <h1 class="color-white bolder font-32">Top View</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-18"></div>
-        </a>
-
-        <a href="#" data-menu="menu-instant-3" data-height="220" class="caption caption-margins round-medium shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">TAP TO VIEW</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">This Card Will Open as a</p>
-                <h1 class="color-white bolder font-32">Right View</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-12"></div>
-        </a>
-
-
-
-    <!-- Modal View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-1"
-         class="menu-box"
-         data-menu-type="menu-box-modal"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
-
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Introducing<br>Instant Screens</h1>
-                <p class="color-white opacity-50">
-                    Built for you with powerful features and flexibility.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-11"></div>
-        </div>
         <div class="content">
-            <p>
-                We build the best mobile websites for you, making them feel as native as native can
-                get with features that are intutive and easy to use. Creating Mobile Templates has
-                been our passion and goal for the past 10 years, ever since the dawn of the first
-                Mobile Website.
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div data-height="70" class="caption caption-margins round-medium">
-            <div class="caption-center left-20">
-                <p class="bottom-0"><strong>Learn more about our products and Features.</strong></p>
-                <p class="bottom-0 font-10 under-heading">www.enableds.com</p>
+            <div class="content-title has-icon">
+                <h3>최신 업데이트</h3>
+                <span class="color-highlight">가장 최근 추가된 강의입니다.</span>
+                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
             </div>
-            <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-            <div class="caption-overlay bg-black opacity-10"></div>
         </div>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>Add Anything Here</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Any Feature, Any Content. Just Works.</p>
-            <p>
-                Believe it or not, this section is actually a menu, built using our ultra powerful mobile menu system. You can
-                add any type of content you want here.
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <a href="#" data-height="130" class="caption round-medium shadow-huge caption-margins">
-            <div class="caption-center right-20 top-10">
-                <span href="#" class="button button-xs button-small round-huge bg-highlight float-right">View More</span>
-            </div>
-            <div class="caption-center left-20">
-                <h1 class="color-white">View More</h1>
-                <p class="under-heading color-white opacity-90 bottom-0 font-11">
-                    Find more Awesome Topics.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-14"></div>
-        </a>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">Close Instant</a>
-    </div>
-
-    <!-- Top View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-2"
-         class="menu-box"
-         data-menu-type="menu-box-top"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
-
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
+        <% @recent&.each do |p| %>
+          <%= link_to lecture_path(p.id), class: "external" do %>
+            <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+                <div class="caption-top left-15 top-15">
+                    <div class="caption-author-left">
+                        <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+                        <strong><%= p.category %></strong>
+                        <span><%= p.category %></span>
+                    </div>
                 </div>
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Introducing<br>Instant Screens</h1>
-                <p class="color-white opacity-50">
-                    Built for you with powerful features and flexibility.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-18"></div>
-        </div>
-        <div class="content">
-            <p>
-                We build the best mobile websites for you, making them feel as native as native can
-                get with features that are intutive and easy to use. Creating Mobile Templates has
-                been our passion and goal for the past 10 years, ever since the dawn of the first
-                Mobile Website.
-            </p>
-            <div class="divider"></div>
-        </div>
 
-        <div data-height="70" class="caption caption-margins round-medium">
-            <div class="caption-center left-20">
-                <p class="bottom-0"><strong>Learn more about our products and Features.</strong></p>
-                <p class="bottom-0 font-10 under-heading">www.enableds.com</p>
-            </div>
-            <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-            <div class="caption-overlay bg-black opacity-10"></div>
-        </div>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>Add Anything Here</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Any Feature, Any Content. Just Works.</p>
-            <p>
-                Believe it or not, this section is actually a menu, built using our ultra powerful mobile menu system. You can
-                add any type of content you want here.
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <a href="#" data-height="130" class="caption round-medium shadow-huge caption-margins">
-            <div class="caption-center right-20 top-10">
-                <span href="#" class="button button-xs button-small round-huge bg-highlight float-right">View More</span>
-            </div>
-            <div class="caption-center left-20">
-                <h1 class="color-white">View More</h1>
-                <p class="under-heading color-white opacity-90 bottom-0 font-11">
-                    Find more Awesome Topics.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-14"></div>
-        </a>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">Close Instant</a>
-    </div>
-
-
-    <!-- Right View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-3"
-         class="menu-box"
-         data-menu-type="menu-box-right"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
-
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
+                <div class="caption-top right-text top-10 right-15">
+                    <span class="color-white ultrabold font-9">더보기</span>
                 </div>
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Introducing<br>Instant Screens</h1>
-                <p class="color-white opacity-50">
-                    Built for you with powerful features and flexibility.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-12"></div>
-        </div>
-        <div class="content">
-            <p>
-                We build the best mobile websites for you, making them feel as native as native can
-                get with features that are intutive and easy to use. Creating Mobile Templates has
-                been our passion and goal for the past 10 years, ever since the dawn of the first
-                Mobile Website.
-            </p>
-            <div class="divider"></div>
-        </div>
 
-        <div data-height="70" class="caption caption-margins round-medium">
-            <div class="caption-center left-20">
-                <p class="bottom-0"><strong>Learn more about our products and Features.</strong></p>
-                <p class="bottom-0 font-10 under-heading">www.enableds.com</p>
-            </div>
-            <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-            <div class="caption-overlay bg-black opacity-10"></div>
-        </div>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>Add Anything Here</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Any Feature, Any Content. Just Works.</p>
-            <p>
-                Believe it or not, this section is actually a menu, built using our ultra powerful mobile menu system. You can
-                add any type of content you want here.
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <a href="#" data-height="130" class="caption round-medium shadow-huge caption-margins">
-            <div class="caption-center right-20 top-10">
-                <span href="#" class="button button-xs button-small round-huge bg-highlight float-right">View More</span>
-            </div>
-            <div class="caption-center left-20">
-                <h1 class="color-white">View More</h1>
-                <p class="under-heading color-white opacity-90 bottom-0 font-11">
-                    Find more Awesome Topics.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-14"></div>
-        </a>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">Close Instant</a>
-    </div>
-
-
+                <div class="caption-bottom left-20 bottom-20">
+                    <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
+                    <h1 class="color-white bolder font-32"><%= p.title %></h1>
+                </div>
+                <div class="caption-overlay bg-black opacity-70"></div>
+                <div class="caption-bg bg-12"></div>
+            </a>
+          <% end %>
+        <% end %>
 
         <div class="divider divider-margins"></div>
 
         <div class="content">
             <div class="content-title has-icon">
-                <h3>Upcoming Goals</h3>
-                <span class="color-highlight">On Your To-Do List Tomorrow</span>
+                <h3>언어 강의 추천</h3>
+                <span class="color-highlight">영어, 한국어, 중국어, 일본어 등 언어관련 강의</span>
                 <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
             </div>
         </div>
 
         <div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
-
-            <div class="slider-item">
-                <div data-height="320" class="caption round-small shadow-huge">
-                    <div class="caption-top left-15 top-15">
-                        <h6 class="color-white opacity-60">Task 1</h6>
-                    </div>
-                    <div class="caption-center left-15">
-                        <h1 class="color-white font-30 bottom-20 line-height-huge">
-                            Design<br>
-                            Product<br>
-                        </h1>
-                        <p class="color-white opacity-80 bottom-0">
-                            Design a beautiful and<br>
-                            simple user interface
-                        </p>
-                    </div>
-                    <div class="caption-bottom bottom-20 left-15 right-15">
-                        <p class="bottom-0 font-10 color-white">70% Complete</p>
-                        <div class="progress-bar-wrapper"
-                             data-progress-complete="70"
-                             data-progress-height="3"
-                             data-progress-border="1"
-                             data-progress-bar-color="#FFF"
-                             data-progress-bar-background="rgba(255,255,255,0.2)">
-                            <div class="progress-bar"></div>
-                        </div>
-                    </div>
-                    <div class="caption-overlay bg-black opacity-70"></div>
-                    <div class="caption-bg bg-1"></div>
-                </div>
-            </div>
-            <div class="slider-item">
-                <div data-height="320" class="caption round-small shadow-huge">
-                    <div class="caption-top left-15 top-15">
-                        <h6 class="color-white opacity-60">Task 2</h6>
-                    </div>
-                    <div class="caption-center left-15">
-                        <h1 class="color-white font-30 bottom-20 line-height-huge">
-                            Code<br>
-                            Design<br>
-                        </h1>
-                        <p class="color-white opacity-80 bottom-0">
-                            Design a beautiful and<br>
-                            simple user interface
-                        </p>
-                    </div>
-                    <div class="caption-bottom bottom-20 left-15 right-15">
-                        <p class="bottom-0 font-10 color-white">30% Complete</p>
-                        <div class="progress-bar-wrapper"
-                             data-progress-complete="30"
-                             data-progress-height="3"
-                             data-progress-border="1"
-                             data-progress-bar-color="#FFF"
-                             data-progress-bar-background="rgba(255,255,255,0.2)">
-                            <div class="progress-bar"></div>
-                        </div>
-                    </div>
-                    <div class="caption-overlay bg-black opacity-70"></div>
-                    <div class="caption-bg bg-2"></div>
-                </div>
-            </div>
-            <div class="slider-item">
-                <div data-height="320" class="caption round-small shadow-huge">
-                    <div class="caption-top left-15 top-15">
-                        <h6 class="color-white opacity-90">Task 3</h6>
-                    </div>
-                    <div class="caption-center left-15">
-                        <h1 class="color-white font-30 bottom-20 line-height-huge">
-                            Verify<br>
-                            Quality<br>
-                        </h1>
-                        <p class="color-white opacity-80 bottom-0">
-                            Design a beautiful and<br>
-                            simple user interface
-                        </p>
-                    </div>
-                    <div class="caption-bottom bottom-20 left-15 right-15">
-                        <p class="bottom-0 font-10 color-white">95% Complete</p>
-                        <div class="progress-bar-wrapper"
-                             data-progress-complete="95"
-                             data-progress-height="3"
-                             data-progress-border="1"
-                             data-progress-bar-color="#FFF"
-                             data-progress-bar-background="rgba(255,255,255,0.2)">
-                            <div class="progress-bar"></div>
-                        </div>
-                    </div>
-                    <div class="caption-overlay bg-black opacity-70"></div>
-                    <div class="caption-bg bg-3"></div>
-                </div>
-            </div>
-            <div data-height="320" class="caption round-small shadow-huge">
-                <div class="caption-top left-15 top-15">
-                    <h6 class="color-white opacity-60">Task 4</h6>
-                </div>
-                <div class="caption-center left-15">
-                    <h1 class="color-white font-30 bottom-20 line-height-huge">
-                        Release<br>
-                        Asterial<br>
-                    </h1>
-                    <p class="color-white opacity-80 bottom-0">
-                        Design a beautiful and<br>
-                        simple user interface
-                    </p>
-                </div>
-                <div class="caption-bottom bottom-20 left-15 right-15">
-                    <p class="bottom-0 font-10 color-white">70% Complete</p>
-                    <div class="progress-bar-wrapper"
-                         data-progress-complete="70"
-                         data-progress-height="3"
-                         data-progress-border="1"
-                         data-progress-bar-color="#FFF"
-                         data-progress-bar-background="rgba(255,255,255,0.2)">
-                        <div class="progress-bar"></div>
-                    </div>
-                </div>
-                    <div class="caption-overlay bg-black opacity-70"></div>
-                <div class="caption-bg bg-4"></div>
-            </div>
-
+          <% @languages&.each do |p| %>
+            <%= link_to lecture_path(p.id) do %>
+              <div class="slider-item">
+                  <div data-height="320" class="caption round-small shadow-huge">
+                      <div class="caption-top left-15 top-15">
+                          <h6 class="color-white opacity-60"><%= p.category %></h6>
+                      </div>
+                      <div class="caption-center left-15">
+                          <h1 class="color-white font-30 bottom-20 line-height-huge">
+                              <%= p.title %>
+                          </h1>
+                          <p class="color-white opacity-80 bottom-0">
+                              <%= p.address.truncate(50)%>
+                          </p>
+                      </div>
+                      <div class="caption-bottom bottom-20 left-15 right-15">
+                          <p class="bottom-0 font-10 color-white">70% Complete</p>
+                          <div class="progress-bar-wrapper"
+                               data-progress-complete="70"
+                               data-progress-height="3"
+                               data-progress-border="1"
+                               data-progress-bar-color="#FFF"
+                               data-progress-bar-background="rgba(255,255,255,0.2)">
+                              <div class="progress-bar"></div>
+                          </div>
+                      </div>
+                      <div class="caption-overlay bg-black opacity-70"></div>
+                      <div class="caption-bg bg-1"></div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
 
+        <div class="divider divider-margins"></div>
+
+
         <div class="content">
-            <h2>Single Boxed Slider</h2>
+            <h2>창업 교육 강의 추천</h2>
             <p>
-                A single boxed slider will contain images or text in a box that will have left and right margins.
+               카페, 식당, 서비스 실전 창업 강의 제공
             </p>
         </div>
 
         <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
+          <% @business&.each do |p| %>
+            <%= link_to lecture_path(p.id) do %>
             <div class="caption round-medium shadow-huge bottom-10">
                 <div class="caption-bottom">
-                    <h2 class="color-white center-text uppercase ultrabold">Splendid Simplicity</h2>
-                    <p class="under-heading color-white center-text bottom-20">A new generation of Mobile Kits.</p>
+                    <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
+                    <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
                 </div>
                 <div class="caption-overlay bg-gradient"></div>
                 <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
             </div>
-            <div class="caption round-medium shadow-huge bottom-10">
-                <div class="caption-bottom">
-                    <h2 class="color-white center-text uppercase ultrabold">Top Notch Quality</h2>
-                    <p class="under-heading color-white center-text bottom-20">Flexibility, Speed, Ease of Use.</p>
-                </div>
-                <div class="caption-overlay bg-gradient"></div>
-                <img class="caption-image owl-lazy" data-src="images/pictures/14.jpg">
-            </div>
-            <div class="caption round-medium shadow-huge bottom-10">
-                <div class="caption-bottom">
-                    <h2 class="color-white center-text uppercase ultrabold">Perfectly Organized</h2>
-                    <p class="under-heading color-white center-text bottom-20">Mobile Website, or App or PWA Ready.</p>
-                </div>
-                <div class="caption-overlay bg-gradient"></div>
-                <img class="caption-image owl-lazy" data-src="images/pictures/9.jpg">
-            </div>
-        </div>
-
-
-        <div class="content bottom-0">
-            <h2>Double Tall Slider</h2>
-            <p class="bottom-20">
-                A double tall slider is a slider that contains images that have a height bigger than the width.
-            </p>
-        </div>
-
-        <div class="double-slider visible-slider2-small owl-carousel owl-no-dots">
-            <div>
-                <div class="caption round-medium shadow-huge">
-                    <div class="caption-bottom">
-                        <h4 class="color-white center-text uppercase ultrabold bottom-10">AppTastic</h4>
-                    </div>
-                    <div class="caption-overlay bg-gradient"></div>
-                    <img class="caption-image owl-lazy" data-src="images/pictures/18l.jpg">
-                </div>
-            </div>
-            <div>
-                <div class="caption round-medium shadow-huge">
-                    <div class="caption-bottom">
-                        <h4 class="color-white center-text uppercase ultrabold bottom-10">AMP DRAWER</h4>
-                    </div>
-                    <div class="caption-overlay bg-gradient"></div>
-                    <img class="caption-image owl-lazy" data-src="images/pictures/28l.jpg">
-                </div>
-            </div>
-            <div>
-                <div class="caption round-medium shadow-huge">
-                    <div class="caption-bottom">
-                        <h4 class="color-white center-text uppercase ultrabold bottom-10">Appeca</h4>
-                    </div>
-                    <div class="caption-overlay bg-gradient"></div>
-                    <img class="caption-image owl-lazy" data-src="images/pictures/13l.jpg">
-                </div>
-            </div>
+          <% end %>
+        <% end %>
         </div>
 
         <div class="divider divider-margins"></div>
 
+        <div class="content">
+            <div class="content-title has-icon">
+                <h3>직업 강의 추천</h3>
+                <span class="color-highlight">자소서, 면접, 자격증 등 직업 관련 강의</span>
+                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+            </div>
+        </div>
+
+        <div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
+          <% @work&.each do |p| %>
+            <%= link_to lecture_path(p.id) do %>
+              <div class="slider-item">
+                  <div data-height="320" class="caption round-small shadow-huge">
+                      <div class="caption-top left-15 top-15">
+                          <h6 class="color-white opacity-60"><%= p.category %></h6>
+                      </div>
+                      <div class="caption-center left-15">
+                          <h1 class="color-white font-30 bottom-20 line-height-huge">
+                              <%= p.title %>
+                          </h1>
+                          <p class="color-white opacity-80 bottom-0">
+                              <%= p.address.truncate(50)%>
+                          </p>
+                      </div>
+                      <div class="caption-bottom bottom-20 left-15 right-15">
+                          <p class="bottom-0 font-10 color-white">70% Complete</p>
+                          <div class="progress-bar-wrapper"
+                               data-progress-complete="70"
+                               data-progress-height="3"
+                               data-progress-border="1"
+                               data-progress-bar-color="#FFF"
+                               data-progress-bar-background="rgba(255,255,255,0.2)">
+                              <div class="progress-bar"></div>
+                          </div>
+                      </div>
+                      <div class="caption-overlay bg-black opacity-70"></div>
+                      <div class="caption-bg bg-1"></div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
         <div class="divider divider-margins"></div>
+
+
+          <div class="content">
+              <h2>코딩 교육 강의 추천</h2>
+              <p>
+                웹, 앱 제작, 데이터 분석 및 데이터 베이스 교육
+              </p>
+          </div>
+
+          <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
+            <% @codding&.each do |p| %>
+              <%= link_to lecture_path(p.id) do %>
+              <div class="caption round-medium shadow-huge bottom-10">
+                  <div class="caption-bottom">
+                      <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
+                      <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
+                  </div>
+                  <div class="caption-overlay bg-gradient"></div>
+                  <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+
+          <div class="divider divider-margins"></div>
+
+          <div class="content">
+              <div class="content-title has-icon">
+                  <h3>문화 강의 추천</h3>
+                  <span class="color-highlight">각 나라의 문화 체험 강의</span>
+                  <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+              </div>
+          </div>
+
+          <div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
+            <% @culture&.each do |p| %>
+              <%= link_to lecture_path(p.id) do %>
+                <div class="slider-item">
+                    <div data-height="320" class="caption round-small shadow-huge">
+                        <div class="caption-top left-15 top-15">
+                            <h6 class="color-white opacity-60"><%= p.category %></h6>
+                        </div>
+                        <div class="caption-center left-15">
+                            <h1 class="color-white font-30 bottom-20 line-height-huge">
+                                <%= p.title %>
+                            </h1>
+                            <p class="color-white opacity-80 bottom-0">
+                                <%= p.address.truncate(50)%>
+                            </p>
+                        </div>
+                        <div class="caption-bottom bottom-20 left-15 right-15">
+                            <p class="bottom-0 font-10 color-white">70% Complete</p>
+                            <div class="progress-bar-wrapper"
+                                 data-progress-complete="70"
+                                 data-progress-height="3"
+                                 data-progress-border="1"
+                                 data-progress-bar-color="#FFF"
+                                 data-progress-bar-background="rgba(255,255,255,0.2)">
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="caption-overlay bg-black opacity-70"></div>
+                        <div class="caption-bg bg-1"></div>
+                    </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="divider divider-margins"></div>
+
+          <div class="content">
+              <h2>컨텐츠 제작 강의 추천</h2>
+              <p>
+                비디오, sns, 카드뉴스, 웹툰 등 컨텐츠 제작 강의
+              </p>
+          </div>
+
+          <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
+            <% @content&.each do |p| %>
+              <%= link_to lecture_path(p.id) do %>
+              <div class="caption round-medium shadow-huge bottom-10">
+                  <div class="caption-bottom">
+                      <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
+                      <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
+                  </div>
+                  <div class="caption-overlay bg-gradient"></div>
+                  <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+
+          <div class="divider divider-margins"></div>
