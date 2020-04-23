@@ -20,7 +20,7 @@
 
 <div class="content">
     <div class="content-title has-border border-green2-dark bottom-10">
-        <h2>Our Goal</h2>
+        <h2>학습 목표</h2>
     </div>
     <span class="under-heading color-highlight font-10 bottom-10">The Force that Drives Us</span>
     <p class="bottom-30">
@@ -54,16 +54,13 @@
 
 <div class="content">
     <div class="content-title has-border border-red2-dark bottom-10">
-        <h2>Focused on Quality</h2>
+        <h2>강의 수강평</h2>
     </div>
-    <span class="under-heading color-highlight font-10">We build Products to Serve your Needs</span>
-    <p class="top-10 bottom-50">
-        Every product we built is desgined to bring the best in its class without sacrificing on performance or features.
-    </p>
+    <span class="under-heading color-highlight font-10">강의를 수강한 학생들의 평가입니다.</span>
 </div>
 
 <div class="content bottom-0">
-    <a href="#" class="clear">
+    <!-- <a href="#" class="clear">
         <div class="one-half small-half">
             <div data-height="95" class="caption round-small shadow-huge">
                 <div class="caption-image">
@@ -78,8 +75,8 @@
                 Released with Creativity in mind and rocking a Beautiful Color Pack.
             </p>
         </div>
-    </a>
-    <a href="#" class="clear">
+    </a> -->
+    <!-- <a href="#" class="clear">
         <div class="one-half small-half">
             <div data-height="95" class="caption round-small shadow-huge">
                 <div class="caption-image">
@@ -94,16 +91,87 @@
                 Designed to give you everything you'll ever need to rock your page.
             </p>
         </div>
-    </a>
-    <div class="clear"></div>
+    </a> -->
+    <% if current_user&.user_type == "Learner"%>
     <h3>Leave Comments</h3>
-    <div class="form-field form-text">
-        <textarea name="contactMessageTextarea" class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
+      <div class="clear"></div>
+      <h3>Leave Comments</h3>
+      <%= form_for Comment.new, class: "external", remote: true do |f| %>
+        <div class="form-field form-text">
+            <%= f.text_area :content, class: "contactTextarea requiredField", id: "contactMessageTextarea"%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :commentable_type, value: "Lecture"%>
+            <%= f.hidden_field :commentable_id, value: @lecture.id%>
+        </div>
+        <div class="form-button">
+            <%= f.submit "Submit", class: "button bg-highlight button-m button-full round-small shadow-huge bottom-0 contactSubmitButton external", style: "color: white; background: #F6BB42"%>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+    <% end %>
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+        <div class="review-1">
+            <em>
+                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+                John Doeson</em>
+            <u class="opacity-50">21st October 2021</u>
+            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
+            <span>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+            </span>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
+            </p>
+        </div>
     </div>
-    <div class="form-button">
-        <input type="submit" class="button bg-highlight button-m button-full round-small shadow-huge bottom-0 contactSubmitButton" value="Send Message" data-formId="contactForm" />
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+        <div class="review-1">
+            <em>
+                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+                John Doeson</em>
+            <u class="opacity-50">21st October 2021</u>
+            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
+            <span>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+            </span>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
+            </p>
+        </div>
     </div>
-    <div class="clear"></div>
+    <div class="divider divider-margins"></div>
+
+    <div class="content">
+        <div class="review-1">
+            <em>
+                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+                John Doeson</em>
+            <u class="opacity-50">21st October 2021</u>
+            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
+            <span>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+            </span>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
+            </p>
+        </div>
+    </div>
 </div>
 
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>

@@ -4,7 +4,7 @@
     <p class="boxed-text-huge top-10 bottom-30">
         HireChance는 100% 공정한 전문 커피를 판매함으로써 전 세계 난민들을 위한 온라인 기술과 언어 교육을 위한 경력 구축에 자금을 지원합니다.
     </p>
-    <a href="#" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a>
+    <a href="/subscription" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a>
 </div>
         <div class="divider divider-margins"></div>
         <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
@@ -52,7 +52,6 @@
             <div class="content-title has-icon">
                 <h3>최신 업데이트</h3>
                 <span class="color-highlight">가장 최근 추가된 강의입니다.</span>
-                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
             </div>
         </div>
         <% @recent&.each do |p| %>
@@ -86,7 +85,9 @@
             <div class="content-title has-icon">
                 <h3>언어 강의 추천</h3>
                 <span class="color-highlight">영어, 한국어, 중국어, 일본어 등 언어관련 강의</span>
-                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+                <%= link_to lecture_search_path(lecture_id: @languages.last.category_before_type_cast) do %>
+                  <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                <% end %>
             </div>
         </div>
 
@@ -129,10 +130,13 @@
 
 
         <div class="content">
-            <h2>창업 교육 강의 추천</h2>
-            <p>
-               카페, 식당, 서비스 실전 창업 강의 제공
-            </p>
+            <div class="content-title has-icon">
+                <h3>창업 교육 강의 추천</h3>
+                <span class="color-highlight">카페, 식당, 서비스 실전 창업 강의 제공</span>
+                <%= link_to lecture_search_path(lecture_id: @business.last.category_before_type_cast) do %>
+                  <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                <% end %>
+            </div>
         </div>
 
         <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
@@ -156,7 +160,9 @@
             <div class="content-title has-icon">
                 <h3>직업 강의 추천</h3>
                 <span class="color-highlight">자소서, 면접, 자격증 등 직업 관련 강의</span>
-                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+                <%= link_to lecture_search_path(lecture_id: @work.last.category_before_type_cast) do %>
+                  <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                <% end %>
             </div>
         </div>
 
@@ -199,10 +205,13 @@
 
 
           <div class="content">
-              <h2>코딩 교육 강의 추천</h2>
-              <p>
-                웹, 앱 제작, 데이터 분석 및 데이터 베이스 교육
-              </p>
+            <div class="content-title has-icon">
+                <h3>코딩 교육 강의 추천</h3>
+                <span class="color-highlight">웹, 앱 제작, 데이터 분석 및 데이터 베이스 교육</span>
+                <%= link_to lecture_search_path(lecture_id: @codding.last.category_before_type_cast) do %>
+                  <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                <% end %>
+            </div>
           </div>
 
           <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
@@ -226,7 +235,9 @@
               <div class="content-title has-icon">
                   <h3>문화 강의 추천</h3>
                   <span class="color-highlight">각 나라의 문화 체험 강의</span>
-                  <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+                  <%= link_to lecture_search_path(lecture_id: @culture.last.category_before_type_cast) do %>
+                    <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                  <% end %>
               </div>
           </div>
 
@@ -268,10 +279,13 @@
           <div class="divider divider-margins"></div>
 
           <div class="content">
-              <h2>컨텐츠 제작 강의 추천</h2>
-              <p>
-                비디오, sns, 카드뉴스, 웹툰 등 컨텐츠 제작 강의
-              </p>
+            <div class="content-title has-icon">
+                <h3>컨텐츠 제작 강의 추천</h3>
+                <span class="color-highlight">비디오, sns, 카드뉴스, 웹툰 등 컨텐츠 제작 강의</span>
+                <%= link_to lecture_search_path(lecture_id: @content.last.category_before_type_cast) do %>
+                  <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
+                <% end %>
+            </div>
           </div>
 
           <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">

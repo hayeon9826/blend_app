@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   root 'home#cover'
 
   resources :products
-  resources :lectures
+  resources :lectures do
+    get :search
+  end
+
+  resources :comments
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

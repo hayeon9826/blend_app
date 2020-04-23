@@ -1,5 +1,5 @@
 <div class="divider divider-margins"></div>
-<% if current_user.user_type == "Learner" %>
+<% if current_user&.user_type == "Learner" %>
 <div class="content bottom-0">
     <h6 class="uppercase">Main Page</h6>
     <div class="link-list link-list-2 link-list-long-border link-list-icon-bg">
