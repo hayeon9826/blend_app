@@ -1,0 +1,9 @@
+console.log("toggle")
+// 방금 like를 만든 유저. 빨간 cancel 버튼으로 바뀌어야함
+<% if @toggle %>
+$('.green').css('display', 'none');
+$('.red').css('display', 'block');
+<% else %>
+$('.red').css('display', 'none');
+$('.green').css('display', 'block');
+<% end %>

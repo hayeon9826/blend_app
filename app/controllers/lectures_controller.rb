@@ -25,6 +25,25 @@ class LecturesController < ApplicationController
     @lecture = Lecture.find(params[:id])
   end
 
+  def toggle
+    @lecture = Lecture.find(params[:id])
+    if lecture_toggle = current_user.likes.where(likable_id: @lecture.id).last
+      lecture_toggle.destroy
+      respond_to do |format|
+        format.js
+        format.html
+      end
+      redirect_to lecture_path(@lecture.id)
+    else
+      @toggle = Like.create!(likable_id: @lecture.id, likable_type: "Lecture", user_id: current_user.id)
+      respond_to do |format|
+        format.js
+        format.html
+      end
+      redirect_to lecture_path(@lecture.id)
+    end
+  end
+
   def search
     @lectures = Lecture.where(category: params[:lecture_id]).all
     if params[:q]

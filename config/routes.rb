@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :products
   resources :lectures do
     get :search
+    member do
+      get :toggle
+    end
   end
 
   resources :comments

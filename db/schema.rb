@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_181452) do
+ActiveRecord::Schema.define(version: 2020_04_24_120732) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_04_22_181452) do
     t.datetime "updated_at", null: false
     t.integer "category"
     t.string "image_link"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "likable_type"
+    t.integer "likable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|

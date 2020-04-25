@@ -11,12 +11,176 @@
 <div class="content bottom-0">
     <a class="embedly-card" data-card-controls="0" href="https://alison.com/courses/microsoft-excel-2013-for-beginners-start-your-excel-journey/content?event=login"></a>
 </div>
+<% if current_user.user_type == "Learner" %>
+  <% if current_user.has_like?(@lecture) %>
+      <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+      <div class="content red">
+        <div class="chip chip-small bg-gray1-dark shadow-large">
+            <i class="fa fa-check bg-green1-dark"></i>
+            <span class="color-black">Registered</span>
+        </div>
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
+          <div
+          style="color: white;"
+          data-remote="true"
+             data-snack-id="snack-3"
+             data-snack-color="bg-red2-dark"
+             data-snack-text="Lecture Cancelled"
+             data-snack-icon="fa fa-times"
+             class="no-border"
+             >
+              <i class="fa fa-times color-red2-dark"></i>
+              <span>Cancel</span>
+              <i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="content green" style="display: none;">
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
+          <div
+            style="color: white;"
+            data-remote="true"
+             data-snack-id="snack-1"
+             data-snack-color="bg-green1-dark"
+             data-snack-text="Successfully registered!"
+             data-snack-icon="fa fa-check">
+              <i class="fa fa-check color-green1-dark"></i>
+              <span>Register</span>
+              <i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+  <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+    <div class="content green">
+      <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
+        <div
+          data-remote="true"
+          class="external"
+          style="color: white;"
+           data-snack-id="snack-1"
+           data-snack-color="bg-green1-dark"
+           data-snack-text="Successfully registered!"
+           data-snack-icon="fa fa-check">
+            <i class="fa fa-check color-green1-dark"></i>
+            <span>Register</span>
+            <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="content red" style="display: none;">
+      <div class="chip chip-small bg-gray1-dark shadow-large">
+          <i class="fa fa-check bg-green1-dark"></i>
+          <span class="color-black">Registered</span>
+      </div>
+      <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
+        <div
+        style="color: white;"
+        data-remote="true"
+           data-snack-id="snack-3"
+           data-snack-color="bg-red2-dark"
+           data-snack-text="Lecture Cancelled"
+           data-snack-icon="fa fa-times"
+           class="no-border"
+           >
+            <i class="fa fa-times color-red2-dark"></i>
+            <span>Cancel</span>
+            <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<% elsif current_user.user_type == "커피 구매자"%>
+  <% if current_user.has_like?(@lecture) %>
+  <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+    <div class="content red">
+      <div class="chip chip-small bg-gray1-dark shadow-large">
+          <i class="fa fa-check bg-green1-dark"></i>
+          <span class="color-black">기부됨</span>
+      </div>
+      <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
+        <div
+        style="color: white;"
+           data-snack-id="snack-3"
+           data-snack-color="bg-red2-dark"
+           data-snack-text="기부강의에서 취소하셨습니다."
+           data-snack-icon="fa fa-times"
+           class="no-border"
+           >
+            <i class="fa fa-times color-red2-dark"></i>
+            <span>기부강의 취소</span>
+            <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="content green" style="display: none;">
+      <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
+        <div
+          style="color: white;"
+           data-snack-id="snack-1"
+           data-snack-color="bg-green1-dark"
+           data-snack-text="기부강의에 담았습니다."
+           data-snack-icon="fa fa-check">
+            <i class="fa fa-check color-green1-dark"></i>
+            <span>기부강의 담기</span>
+            <i class="fa fa-angle-right"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% else %>
+    <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+      <div class="content green">
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
+          <div
+            style="color: white;"
+             data-snack-id="snack-1"
+             data-snack-color="bg-green1-dark"
+             data-snack-text="기부강의에 담았습니다."
+             data-snack-icon="fa fa-check">
+              <i class="fa fa-check color-green1-dark"></i>
+              <span>기부강의 담기</span>
+              <i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="content red" style="display: none;">
+        <div class="chip chip-small bg-gray1-dark shadow-large">
+            <i class="fa fa-check bg-green1-dark"></i>
+            <span class="color-black">기부됨</span>
+        </div>
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
+          <div
+          style="color: white;"
+             data-snack-id="snack-3"
+             data-snack-color="bg-red2-dark"
+             data-snack-text="기부강의에서 취소하셨습니다."
+             data-snack-icon="fa fa-times"
+             class="no-border"
+             >
+              <i class="fa fa-times color-red2-dark"></i>
+              <span>기부강의 취소</span>
+              <i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  로그인 후 기부 가능합니다.
+<% end %>
 <div class="content">
     <h5 class="bolder"><%= @lecture.title %></h5>
     <p>
         <%= @lecture.address %>
     </p>
 </div>
+<div class="snackbars snackbars-boxed snackbar-round">
+    <a href="#" class="bg-blue2-dark" id="snackbar-manual-1"><i class="fa fa-sync fa-spin"></i>Just a second...</a>
+</div>
+
 
 <div class="content">
     <div class="content-title has-border border-green2-dark bottom-10">
@@ -93,85 +257,48 @@
         </div>
     </a> -->
     <% if current_user&.user_type == "Learner"%>
-    <h3>Leave Comments</h3>
       <div class="clear"></div>
       <h3>Leave Comments</h3>
       <%= form_for Comment.new, class: "external", remote: true do |f| %>
         <div class="form-field form-text">
-            <%= f.text_area :content, class: "contactTextarea requiredField", id: "contactMessageTextarea"%>
+            <%= f.text_area :content, class: "commentTextarea", required: true%>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :commentable_type, value: "Lecture"%>
             <%= f.hidden_field :commentable_id, value: @lecture.id%>
         </div>
-        <div class="form-button">
-            <%= f.submit "Submit", class: "button bg-highlight button-m button-full round-small shadow-huge bottom-0 contactSubmitButton external", style: "color: white; background: #F6BB42"%>
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
+            <%= f.submit "Submit", style: "color: white; background: #F6BB42"%>
         </div>
       <% end %>
       <div class="clear"></div>
     <% end %>
     <div class="divider divider-margins"></div>
 
-    <div class="content">
-        <div class="review-1">
-            <em>
-                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-                John Doeson</em>
-            <u class="opacity-50">21st October 2021</u>
-            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
-            <span>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-            </span>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
-            </p>
+  <% if @lecture.comments.present? %>
+    <% @lecture.comments&.order(id: :desc).each do |comment| %>
+        <div class="commentList">
+          <%= render 'comments/comment', comment: comment %>
         </div>
-    </div>
-    <div class="divider divider-margins"></div>
-
-    <div class="content">
-        <div class="review-1">
-            <em>
-                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-                John Doeson</em>
-            <u class="opacity-50">21st October 2021</u>
-            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
-            <span>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-            </span>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
-            </p>
-        </div>
-    </div>
-    <div class="divider divider-margins"></div>
-
-    <div class="content">
-        <div class="review-1">
-            <em>
-                <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-                John Doeson</em>
-            <u class="opacity-50">21st October 2021</u>
-            <strong class="regular-bold font-13">Absolutely gorgeous stuff!</strong>
-            <span>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-                <i class="fa fa-star color-yellow1-dark"></i>
-            </span>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula enim. Proin volutpat consectetur ipsum a imperdiet. Nulla elementum, lectus a sagittis venenatis, lacus justo pharetra velit, eget venenatis est felis eget mi. Donec tincidunt efficitur nulla, sed viverra mauris facilisis vitae.
-            </p>
-        </div>
-    </div>
+    <% end %>
+  <% else %>
+  <div class="content">
+      <div class="review-1">
+          <% if current_user&.user_type == "Learner"%>
+          No Reviews
+          <% else %>
+          리뷰가 없습니다.
+          <% end %>
+      </div>
+  </div>
+  <div class="divider divider-margins"></div>
+  <% end %>
 </div>
 
+  <!-- <div class="menu-hider"></div> -->
+
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+<script>
+  $('#contactMessageTextarea').on('click', function(){
+    console.log("SS")
+  })
+</script>

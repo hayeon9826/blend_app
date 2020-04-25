@@ -1,0 +1,18 @@
+<div class="content">
+    <div class="review-1 comment-<%= comment.id%>">
+        <em>
+            <%= comment.user.name %></em>
+        <u class="opacity-50"><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S")%></u>
+        <span>
+            <i class="fa fa-star color-yellow1-dark"></i>
+            <i class="fa fa-star color-yellow1-dark"></i>
+            <i class="fa fa-star color-yellow1-dark"></i>
+            <i class="fa fa-star color-yellow1-dark"></i>
+            <i class="fa fa-star color-yellow1-dark"></i>
+        </span>
+        <p>
+            <%= comment.content %>
+        </p>
+    </div>
+</div>
+<div class="divider divider-margins"></div>

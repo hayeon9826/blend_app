@@ -3,6 +3,13 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def create
+    @lecture = Lecture.find(params[:comment][:commentable_id])
+    @comment = @lecture.comments.create!(comment_params)
+    respond_to do |format|
+      format.js
+      format.html
+    end
+    redirect_to lecture_path(@lecture.id)
   end
 
   def destroy
