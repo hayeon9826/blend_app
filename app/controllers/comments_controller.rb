@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
     @comment = @lecture.comments.create!(comment_params)
     respond_to do |format|
       format.js
-      format.html
+      # format.html
     end
-    redirect_to lecture_path(@lecture.id)
+    # redirect_to lecture_path(@lecture.id)
   end
 
   def destroy

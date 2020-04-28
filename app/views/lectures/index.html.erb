@@ -14,7 +14,7 @@
           <i class="fa fa-times disabled color-red2-dark"></i>
         </div>
       <% end %>
-      <% if @q.title_or_address_or_category_cont.present? %>
+      <% if @q&.title_or_address_or_category_cont.present? %>
       <div class="divider divider-margins"></div>
         <div class="content">
             <div class="content-title has-icon">
@@ -85,7 +85,7 @@
             <div class="content-title has-icon">
                 <h3>언어 강의 추천</h3>
                 <span class="color-highlight">영어, 한국어, 중국어, 일본어 등 언어관련 강의</span>
-                <%= link_to lecture_search_path(lecture_id: @languages.last.category_before_type_cast) do %>
+                <%= link_to lecture_search_path(lecture_id: @languages&.last&.category_before_type_cast) do %>
                   <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
                 <% end %>
             </div>
@@ -133,7 +133,7 @@
             <div class="content-title has-icon">
                 <h3>창업 교육 강의 추천</h3>
                 <span class="color-highlight">카페, 식당, 서비스 실전 창업 강의 제공</span>
-                <%= link_to lecture_search_path(lecture_id: @business.last.category_before_type_cast) do %>
+                <%= link_to lecture_search_path(lecture_id: @business&.last&.category_before_type_cast) do %>
                   <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
                 <% end %>
             </div>
@@ -160,7 +160,7 @@
             <div class="content-title has-icon">
                 <h3>직업 강의 추천</h3>
                 <span class="color-highlight">자소서, 면접, 자격증 등 직업 관련 강의</span>
-                <%= link_to lecture_search_path(lecture_id: @work.last.category_before_type_cast) do %>
+                <%= link_to lecture_search_path(lecture_id: @work&.last&.category_before_type_cast) do %>
                   <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
                 <% end %>
             </div>
@@ -208,7 +208,7 @@
             <div class="content-title has-icon">
                 <h3>코딩 교육 강의 추천</h3>
                 <span class="color-highlight">웹, 앱 제작, 데이터 분석 및 데이터 베이스 교육</span>
-                <%= link_to lecture_search_path(lecture_id: @codding.last.category_before_type_cast) do %>
+                <%= link_to lecture_search_path(lecture_id: @codding&.last&.category_before_type_cast) do %>
                   <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
                 <% end %>
             </div>

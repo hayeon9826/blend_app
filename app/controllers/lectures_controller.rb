@@ -31,16 +31,16 @@ class LecturesController < ApplicationController
       lecture_toggle.destroy
       respond_to do |format|
         format.js
-        format.html
+        # format.html
       end
-      redirect_to lecture_path(@lecture.id)
+      # redirect_to lecture_path(@lecture.id)
     else
       @toggle = Like.create!(likable_id: @lecture.id, likable_type: "Lecture", user_id: current_user.id)
       respond_to do |format|
         format.js
-        format.html
+        # format.html
       end
-      redirect_to lecture_path(@lecture.id)
+      # redirect_to lecture_path(@lecture.id)
     end
   end
 

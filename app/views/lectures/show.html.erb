@@ -13,7 +13,7 @@
 </div>
 <% if current_user.user_type == "Learner" %>
   <% if current_user.has_like?(@lecture) %>
-      <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+      <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
       <div class="content red">
         <div class="chip chip-small bg-gray1-dark shadow-large">
             <i class="fa fa-check bg-green1-dark"></i>
@@ -52,12 +52,11 @@
       </div>
     <% end %>
   <% else %>
-  <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+  <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
     <div class="content green">
       <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
         <div
           data-remote="true"
-          class="external"
           style="color: white;"
            data-snack-id="snack-1"
            data-snack-color="bg-green1-dark"
@@ -94,7 +93,7 @@
 <% end %>
 <% elsif current_user.user_type == "커피 구매자"%>
   <% if current_user.has_like?(@lecture) %>
-  <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+  <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
     <div class="content red">
       <div class="chip chip-small bg-gray1-dark shadow-large">
           <i class="fa fa-check bg-green1-dark"></i>
@@ -131,7 +130,7 @@
     </div>
   <% end %>
   <% else %>
-    <%= link_to toggle_lecture_path(@lecture.id), class: "external", remote: true do %>
+    <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
       <div class="content green">
         <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
           <div
