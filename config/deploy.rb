@@ -2,7 +2,8 @@
 lock "~> 3.13.0"
 
 set :application, "blend_app"
-set :repo_url, "git@github.com:hayeon9826/blend_app.git"
+# set :repo_url, "git@github.com:hayeon9826/blend_app.git"
+set :repo_url, "https://github.com/hayeon9826/blend_app.git"
 set :passenger_restart_with_touch, true
 set :keep_releases, 2
 
