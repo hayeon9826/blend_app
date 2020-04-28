@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:hayeon9826/hayeon9826.git"
 set :passenger_restart_with_touch, true
 set :keep_releases, 2
 
-set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
+# set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -14,6 +14,7 @@ set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
 set :deploy_to, '/home/deploy/blend_app'
+
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
