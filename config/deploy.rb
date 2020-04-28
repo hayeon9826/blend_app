@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.13.0"
 
-set :application, "blend_app"
+set :application, "hayeon9826"
 set :repo_url, "git@github.com:hayeon9826/hayeon9826.git"
 set :passenger_restart_with_touch, true
 set :keep_releases, 2
