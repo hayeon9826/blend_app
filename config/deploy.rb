@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.13.0"
 
-set :application, "hayeon9826"
-set :repo_url, "git@github.com:hayeon9826/hayeon9826.git"
+set :application, "blend_app"
+set :repo_url, "git@github.com:hayeon9826/blend_app.git"
 set :passenger_restart_with_touch, true
 set :keep_releases, 2
 
@@ -28,7 +28,7 @@ set :deploy_to, '/home/deploy/blend_app'
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
-append :linked_files, "config/master.key"
+append :linked_files, "config/master.key", "config/application.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
