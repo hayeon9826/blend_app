@@ -1,5 +1,7 @@
 class Lecture < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes,as: :likable, dependent: :destroy
+  mount_uploader :image, ImageUploader
 
   enum category: {"언어": 0, "창업교육": 1, "직업교육": 2, "코딩": 3, "문화": 4, "콘텐츠 제작": 5}
 

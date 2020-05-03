@@ -25,7 +25,7 @@
     </div>
 </div>
 <% @likes.last(3).each do |p| %>
-  <a href="#" data-menu="menu-portfolio-instant-1" data-height="230" class="caption caption-margins round-medium shadow-huge">
+  <a href="lectures/<%= p.likable_id%>" data-menu="menu-portfolio-instant-1" data-height="230" class="caption caption-margins round-medium shadow-huge">
       <div class="caption-top left-15 top-15">
           <div class="caption-author-left">
               <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
@@ -42,7 +42,11 @@
           <h1 class="color-white bolder font-32"><%= Lecture.find(p.likable_id).title %></h1>
       </div>
       <div class="caption-overlay bg-black opacity-70"></div>
-      <div class="caption-bg bg-18"></div>
+      <% if Lecture.find(p.likable_id).image.present? %>
+        <%= image_tag(Lecture.find(p.likable_id).image.large.url)%>
+      <% else %>
+        <div class="caption-bg bg-18"></div>
+      <% end %>
   </a>
 <% end %>
 

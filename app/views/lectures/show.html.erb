@@ -9,9 +9,10 @@
 
 
 <div class="content bottom-0">
-    <a class="embedly-card" data-card-controls="0" href="https://alison.com/courses/microsoft-excel-2013-for-beginners-start-your-excel-journey/content?event=login"></a>
+    <a class="embedly-card" data-card-controls="0" href="<%= @lecture.preview_link.present? ? @lecture.preview_link : "https://alison.com/courses/microsoft-excel-2013-for-beginners-start-your-excel-journey/content?event=login" %>"></a>
 </div>
 <% if current_user&.user_type == "Learner" %>
+<div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%> Registered</span></div>
   <% if current_user&.has_like?(@lecture) %>
       <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
       <div class="content red">
@@ -92,6 +93,7 @@
   <% end %>
 <% end %>
 <% elsif current_user&.user_type == "커피 구매자"%>
+  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명 기부함</span></div>
   <% if current_user&.has_like?(@lecture) %>
   <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
     <div class="content red">
@@ -168,6 +170,7 @@
     <% end %>
   <% end %>
 <% else %>
+  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명 기부함</span></div>
 <div class="content" >
   <div class="chip chip-small bg-dark2-dark shadow-large">
     <%= link_to new_user_session_path do %>
