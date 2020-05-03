@@ -31,6 +31,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'jquery-rails'
 gem 'devise-i18n'
+gem 'carrierwave', '~> 2.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -5,7 +5,7 @@ ActiveAdmin.register Lecture do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :address, :price, :donators, :student
+  permit_params :title, :address, :price, :donators, :student, :category, :image_link, :image, :preview_link
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Lecture do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

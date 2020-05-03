@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def mypage
+    @likes = current_user.likes.where(likable_type: "Lecture").all
   end
 
   def subscription
