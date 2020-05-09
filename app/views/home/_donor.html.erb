@@ -8,7 +8,39 @@
     <div class="clear"></div>
 </div>
 
-<div class="divider divider-margins bottom-0"></div>
+<div class="divider divider-margins bottom-15"></div>
+
+        <div class="content">
+            <h2>기부 커피콩 순위</h2>
+            <p>
+                <%= Date.today %>의 기부콩 순위입니다.
+            </p>
+
+            <table class="table-borders shadow-huge round-medium">
+                <tr>
+                    <th>아이디</th>
+                    <th>기부콩</th>
+                    <th>순위</th>
+                </tr>
+                <tr>
+                    <td>Apple</td>
+                    <td class="color-green1-dark">$ 500.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right rotate-270 color-green1-dark"></i></td>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td class="color-yellow1-dark">$ 400.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right color-yellow1-dark"></i></td>
+                </tr>
+                <tr>
+                    <td>Samsung</td>
+                    <td class="color-red1-dark">$ 300.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right rotate-90 color-red1-dark"></i></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="divider divider-margins"></div>
 
 <!-- <div class="content gallery-view-controls">
     <a href="#" class="color-highlight gallery-view-1-activate"><i class="fa fa-th"></i></a>
@@ -17,12 +49,14 @@
     <div class="clear"></div>
 </div> -->
 
-<div class="divider divider-margins bottom-15"></div>
+
 <div class="content">
     <div class="content-title has-icon">
         <h3>나의 기부 강의</h3>
         <span class="color-highlight"><%= current_user&.name %>님의 강의 목록입니다</span>
-        <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <%= link_to my_lecture_path do %>
+          <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <% end %>
     </div>
 </div>
 <% if @likes.present? %>
@@ -55,12 +89,14 @@
   기부한 강의가 없습니다
 </div>
 <% end %>
-
+<div class="divider divider-margins bottom-15"></div>
 <div class="content">
     <div class="content-title has-icon">
         <h3>수강생들의 한줄</h3>
         <span class="color-highlight"><%= current_user&.name %>님의 강의 수강생들의 강의평입니다.</span>
-        <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <%= link_to my_comment_path do %>
+          <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <% end %>
     </div>
 </div>
 
@@ -93,7 +129,7 @@
 
 <div class="divider divider-margins"></div>
 
-<div class="content">
+<!-- <div class="content">
     <h1 class="center-text bottom-0 font-26">수강 등록 현황</h1><Br>
     <p class="center-text under-heading font-11 color-highlight bottom-30">각 강의별 수강자 현황입니다</p>
     <div class="chart-container">
@@ -102,7 +138,7 @@
 </div>
 
 
-<div class="divider divider-margins"></div>
+<div class="divider divider-margins"></div> -->
 
 
 <div class="menu-hider"></div>

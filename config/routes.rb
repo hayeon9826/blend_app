@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get '/index' => 'home#index', as: :index
   get '/mypage' => "home#mypage", as: :mypage
+  get '/my_lecture' => "home#my_lecture", as: :my_lecture
+  get '/my_comment' => "home#my_comment", as: :my_comment
 
   get '/subscription' => 'home#subscription', as: :subscription
   get '/menu' => 'home#menu', as: :menu

@@ -76,6 +76,8 @@
         <div class="caption-overlay bg-black opacity-70"></div>
         <% if p.image.present? %>
           <%= image_tag(p.image.large.url)%>
+        <% elsif p.image_link.present?%>
+          <img class="caption-bg bg-12" src="<%= p.image_link%>">
         <% else %>
           <div class="caption-bg bg-12"></div>
         <% end %>
@@ -125,8 +127,10 @@
               <div class="caption-overlay bg-black opacity-70"></div>
               <% if p.image.present? %>
                 <%= image_tag(p.image.large.url)%>
+              <% elsif p.image_link.present?%>
+                <img class="caption-bg bg-12" src="<%= p.image_link%>">
               <% else %>
-                <div class="caption-bg bg-1"></div>
+                <div class="caption-bg bg-12"></div>
               <% end %>
           </div>
       </div>
@@ -158,6 +162,8 @@
         <div class="caption-overlay bg-gradient"></div>
         <% if p.image.present? %>
           <%= image_tag(p.image.large.url)%>
+        <% elsif p.image_link.present?%>
+          <img class="caption-image owl-laz" src="<%= p.image_link%>">
         <% else %>
           <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
         <% end %>
@@ -208,8 +214,10 @@
               <div class="caption-overlay bg-black opacity-70"></div>
               <% if p.image.present? %>
                 <%= image_tag(p.image.large.url)%>
+              <% elsif p.image_link.present?%>
+                <img class="caption-bg bg-12" src="<%= p.image_link%>">
               <% else %>
-                <div class="caption-bg bg-1"></div>
+                <div class="caption-bg bg-12"></div>
               <% end %>
           </div>
       </div>
@@ -238,9 +246,10 @@
               <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
               <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
           </div>
-          <div class="caption-overlay bg-gradient"></div>
           <% if p.image.present? %>
             <%= image_tag(p.image.large.url)%>
+          <% elsif p.image_link.present?%>
+            <img class="caption-image owl-laz" src="<%= p.image_link%>">
           <% else %>
             <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
           <% end %>
@@ -291,8 +300,10 @@
                 <div class="caption-overlay bg-black opacity-70"></div>
                 <% if p.image.present? %>
                   <%= image_tag(p.image.large.url)%>
+                <% elsif p.image_link.present?%>
+                  <img class="caption-bg bg-12" src="<%= p.image_link%>">
                 <% else %>
-                  <div class="caption-bg bg-1"></div>
+                  <div class="caption-bg bg-12"></div>
                 <% end %>
             </div>
         </div>
@@ -323,6 +334,8 @@
           <div class="caption-overlay bg-gradient"></div>
           <% if p.image.present? %>
             <%= image_tag(p.image.large.url)%>
+          <% elsif p.image_link.present?%>
+            <img class="caption-image owl-laz" src="<%= p.image_link%>">
           <% else %>
             <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
           <% end %>
