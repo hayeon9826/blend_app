@@ -8,7 +8,39 @@
     <div class="clear"></div>
 </div>
 
-<div class="divider divider-margins bottom-0"></div>
+<div class="divider divider-margins bottom-15"></div>
+
+        <div class="content">
+            <h2>기부 커피콩 순위</h2>
+            <p>
+                <%= Date.today %>의 기부콩 순위입니다.
+            </p>
+
+            <table class="table-borders shadow-huge round-medium">
+                <tr>
+                    <th>아이디</th>
+                    <th>기부콩</th>
+                    <th>순위</th>
+                </tr>
+                <tr>
+                    <td>Apple</td>
+                    <td class="color-green1-dark">$ 500.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right rotate-270 color-green1-dark"></i></td>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td class="color-yellow1-dark">$ 400.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right color-yellow1-dark"></i></td>
+                </tr>
+                <tr>
+                    <td>Samsung</td>
+                    <td class="color-red1-dark">$ 300.00</td>
+                    <td><i class="fa fa-long-arrow-alt-right rotate-90 color-red1-dark"></i></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="divider divider-margins"></div>
 
 <!-- <div class="content gallery-view-controls">
     <a href="#" class="color-highlight gallery-view-1-activate"><i class="fa fa-th"></i></a>
@@ -17,131 +49,87 @@
     <div class="clear"></div>
 </div> -->
 
-<div class="divider divider-margins bottom-15"></div>
+
 <div class="content">
     <div class="content-title has-icon">
         <h3>나의 기부 강의</h3>
         <span class="color-highlight"><%= current_user&.name %>님의 강의 목록입니다</span>
-        <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <%= link_to my_lecture_path do %>
+          <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <% end %>
     </div>
 </div>
-
-<div class="content bottom-20">
-    <div class="gallery-views gallery-view-1">
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/10t.jpg" title="Vynil and Typerwritter">
-            <img src="images/empty.png" data-src="images/pictures/10t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">Messy Desk?</h4>
-                <p>Some may consider this to be a very messy desk.</p>
-                <div class="divider bottom-0"></div>
+<% if @likes.present? %>
+  <% @likes.last(3).each do |p| %>
+    <a href="lectures/<%= p.likable_id%>" data-menu="menu-portfolio-instant-1" data-height="230" class="caption caption-margins round-medium shadow-huge">
+        <div class="caption-top left-15 top-15">
+            <div class="caption-author-left">
+                <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+                <strong>Enabled</strong>
+                <span>2 Days Ago</span>
             </div>
-        </a>
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/11t.jpg" title="Fruit Cookie Pie">
-            <img src="images/empty.png" data-src="images/pictures/11t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">Designers Desk</h4>
-                <p>With all the gadgets you'd ever wish for.</p>
-                <div class="divider bottom-0"></div>
-            </div>
-        </a>
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/28t.jpg" title="Plain Cookies and Flour">
-            <img src="images/empty.png" data-src="images/pictures/28t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">Apple Watch</h4>
-                <p>The perfect and small notification device.</p>
-                <div class="divider bottom-0"></div>
-            </div>
-        </a>
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/18t.jpg" title="Pots and Stuff">
-            <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">City Landscape</h4>
-                <p>It's absolutely gorgeous, we'd love to see it live.</p>
-                <div class="divider bottom-0"></div>
-            </div>
-        </a>
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/14t.jpg" title="Delicious Strawberries">
-            <img src="images/empty.png" data-src="images/pictures/14t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">Typography and iPhone 5</h4>
-                <p>A beautifully captured snap with great contrast.</p>
-                <div class="divider bottom-0"></div>
-            </div>
-        </a>
-        <a class="default-link" data-lightbox="gallery-1" href="images/pictures/15t.jpg" title="A Beautiful Camera">
-            <img src="images/empty.png" data-src="images/pictures/15t.jpg" class="preload-image round-small shadow-huge responsive-image" alt="img">
-            <div class="caption">
-                <h4 class="bottom-0 color-theme">Feather and Paper?</h4>
-                <p>Going back to days when things were simplere.</p>
-            </div>
-        </a>
-    </div>
-    <div class="clear"></div>
+        </div>
+        <div class="caption-top top-15 right-10">
+            <div class="clear"></div>
+        </div>
+        <div class="caption-bottom left-20 bottom-20">
+            <p class="color-white opacity-70 bottom-0 font-12"><%= Lecture.find(p.likable_id).address.truncate(50) %></p>
+            <h1 class="color-white bolder font-32"><%= Lecture.find(p.likable_id).title %></h1>
+        </div>
+        <div class="caption-overlay bg-black opacity-70"></div>
+        <% if Lecture.find(p.likable_id).image.present? %>
+          <%= image_tag(Lecture.find(p.likable_id).image.large.url)%>
+        <% else %>
+          <div class="caption-bg bg-18"></div>
+        <% end %>
+    </a>
+  <% end %>
+<% else %>
+<div class="content caption round-medium shadow-huge" style='padding: 10px'>
+  기부한 강의가 없습니다
 </div>
-
+<% end %>
+<div class="divider divider-margins bottom-15"></div>
 <div class="content">
     <div class="content-title has-icon">
         <h3>수강생들의 한줄</h3>
         <span class="color-highlight"><%= current_user&.name %>님의 강의 수강생들의 강의평입니다.</span>
-        <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <%= link_to my_comment_path do %>
+          <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+        <% end %>
     </div>
 </div>
 
-<div class="content caption round-medium shadow-huge" style='padding: 10px'>
-    <div class="review-5 container top-20">
-        <h1 class="font-600">5.00</h1>
-        <h2>average rating</h2>
-        <div class="review-stars">
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
+<% if @likes.present? %>
+  <% @likes.last(3).each do |p| %>
+    <% p.get_comments.each do |comment| %>
+      <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+        <div class="review-5 container top-20">
+            <h3 class="font-600"><%= comment.get_lecture.title %></h3>
+            <h2><%= comment.user.name %></h2>
+            <div class="review-stars">
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+            </div>
+            <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+            <p>
+          <%= comment.content %>
         </div>
-        <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-        <p>
-            The best support I have ever had. They are on top of things and with very fast and accurate replies. I will continue to purchase items as needed and will gladly recommend there service to anyone. I would give them 10 stars if I could. Keep up the great work and even better service.
-        </p>
-    </div>
-</div>
-<div class="content caption round-medium shadow-huge" style='padding: 10px'>
-    <div class="review-5 container top-20">
-        <h1 class="font-600">5.00</h1>
-        <h2>average rating</h2>
-        <div class="review-stars">
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-        </div>
-        <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-        <p>
-            The best support I have ever had. They are on top of things and with very fast and accurate replies. I will continue to purchase items as needed and will gladly recommend there service to anyone. I would give them 10 stars if I could. Keep up the great work and even better service.
-        </p>
-    </div>
-</div>
-<div class="content caption round-medium shadow-huge" style='padding: 10px'>
-    <div class="review-5 container top-20">
-        <h1 class="font-600">5.00</h1>
-        <h2>average rating</h2>
-        <div class="review-stars">
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-            <i class="fa fa-star color-yellow1-dark"></i>
-        </div>
-        <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-        <p>
-            The best support I have ever had. They are on top of things and with very fast and accurate replies. I will continue to purchase items as needed and will gladly recommend there service to anyone. I would give them 10 stars if I could. Keep up the great work and even better service.
-        </p>
-    </div>
-</div>
+      </div>
+      <% end %>
+  <% end %>
+<% else %>
+  <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+    댓글이 없습니다.
+  </div>
+<% end %>
 
 <div class="divider divider-margins"></div>
 
-<div class="content">
+<!-- <div class="content">
     <h1 class="center-text bottom-0 font-26">수강 등록 현황</h1><Br>
     <p class="center-text under-heading font-11 color-highlight bottom-30">각 강의별 수강자 현황입니다</p>
     <div class="chart-container">
@@ -150,7 +138,7 @@
 </div>
 
 
-<div class="divider divider-margins"></div>
+<div class="divider divider-margins"></div> -->
 
 
 <div class="menu-hider"></div>

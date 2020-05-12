@@ -1,0 +1,35 @@
+<div class="divider divider-margins bottom-30"></div>
+<div class="content">
+    <div class="content-title has-icon">
+        <h3>수강생들의 한줄</h3>
+        <span class="color-highlight"><%= current_user&.name %>님의 강의 수강생들의 강의평입니다.</span>
+        <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+    </div>
+</div>
+
+<% if @likes.present? %>
+  <% @likes.each do |p| %>
+    <% p.get_comments.each do |comment| %>
+      <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+        <div class="review-5 container top-20">
+            <h3 class="font-600"><%= comment.get_lecture.title %></h3>
+            <h2><%= comment.user.name %></h2>
+            <div class="review-stars">
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+                <i class="fa fa-star color-yellow1-dark"></i>
+            </div>
+            <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+            <p>
+          <%= comment.content %>
+        </div>
+      </div>
+      <% end %>
+  <% end %>
+<% else %>
+  <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+    댓글이 없습니다.
+  </div>
+<% end %>
