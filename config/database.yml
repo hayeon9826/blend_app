@@ -5,13 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # timeout: 5000
 
 development:
   <<: *default
+  adapter: postgresql
   database: blend_development
 
 # Warning: The database defined as "test" will be erased and
@@ -23,4 +23,5 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: blend_production
