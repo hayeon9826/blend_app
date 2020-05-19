@@ -1,10 +1,13 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:mypage, :my_lecture]
+  before_action :authenticate_user!, except: [:cover]
+
   def index
+    @point = get_point
   end
 
   def mypage
     @likes = current_user.likes.where(likable_type: "Lecture").all
+    @point = get_point
   end
 
   def my_lecture

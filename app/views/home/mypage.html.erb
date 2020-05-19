@@ -4,8 +4,11 @@
         <p>
             <%= current_user&.email%>
         </p>
-        <%# <a href="#" class="color-theme">1,513 <span> Followers</span></a>
-        <a href="#" class="color-theme">342  <span>Following</span></a> %>
+        <% if current_user.user_type == "Learner" %>
+        <a href="#" class="color-theme">Total <%= @point.point%> Blends</a>
+        <% else %>
+        <a href="#" class="color-theme">총 <%= @point.point%> 블렌드</a>
+        <% end %>
         <div class="clear"></div>
     </div>
     <div class="profile-right">

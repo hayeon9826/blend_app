@@ -19,6 +19,7 @@ class LecturesController < ApplicationController
       @lectures = @q.result(distinct: true)
       @lectures = @lectures.page(@page).per(12)
     end
+    @all_lectures = Lecture.all
   end
 
   def show

@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  has_many :points, dependent: :destroy
+
   enum user_type: {"커피 구매자": 0, "Learner": 1}
 
   def has_like? like

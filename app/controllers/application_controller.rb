@@ -6,4 +6,8 @@ def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :current_password, :user_type ])
 end
 
+def get_point
+  @point = current_user.points.first_or_create(point: 1000)
+end
+
 end
