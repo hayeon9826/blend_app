@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     @point = get_point
     @donation = current_user.donations.sum("point")
+    @current_rank = User.order(:donation_total).reverse.index(current_user) + 1
   end
 
   def mypage
