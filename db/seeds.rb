@@ -60,8 +60,5 @@ def create_users
   end
 end
 
-create_users
-
-
-
-# create_products
+# create_users
+create_products
