@@ -34,6 +34,7 @@ gem 'devise-i18n'
 gem 'carrierwave', '~> 2.0'
 gem 'pg'
 gem "faker"
+gem 'active_skin'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
