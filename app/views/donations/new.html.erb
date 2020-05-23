@@ -1,0 +1,47 @@
+<div data-height="cover" style="top: 250px">
+  <div class="caption-center" style="margin-top: 0px;">
+    <div class="content bottom-0">
+      <div style="padding: 30px; padding-top: 40px">
+        <h1 class="color-black font-30 top-30">블렌드 기부하기</h1>
+        <%= form_for @donation do |f| %>
+        <div class="input-style input-style-1 input-required top-20">
+          <h5>보유 블렌드: <%= current_user.points.first.point %></h5>
+          <span>기부 블렌드</span>
+          <em>(필수)</em>
+          <%= f.text_field :point, autofocus: true, autocomplete: "name", placeholder: "기부 블렌드 입력"%>
+        </div>
+        <div class="clear"></div>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :lecture_id, value: @lecture.id %>
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
+          <%= f.submit "기부하기" , style: "color: white; background: #F6BB42"%>
+        </div>
+      <% end %>
+    </div>
+    <div class="divider divider-margins"></div>
+    <h3 class="color-black font-15 top-30">기부 강의</h3><Br>
+    <%= link_to lecture_path(@lecture.id), class: "external" do %>
+    <div class="clear">
+      <div class="one-half small-half">
+        <div data-height="140" class="caption">
+          <div class="caption-image">
+            <% if @lecture.image&.present? %>
+              <img src="<%= @lecture.image.url %>" class="responsive-image round-medium">
+            <% else %>
+              <img src="<%= @lecture.image_link.present? ? @lecture.image_link : "/images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="one-half large-half last-column">
+        <h5 class="color-theme"><%= @lecture.title %></h5>
+        <span class="under-heading font-10 color-highlight"><%= @lecture.category %></span>
+        <p class="font-12 bottom-10">
+          <%= @lecture.address.truncate(100) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>

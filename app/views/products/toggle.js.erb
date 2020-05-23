@@ -1,0 +1,9 @@
+<% if @toggle %>
+  $(".toggle-button").removeClass("bg-green1-dark");
+  $(".toggle-button").addClass("bg-red1-light");
+  $(".toggle-button").html("찜취소");
+<% else %>
+  $(".toggle-button").removeClass("bg-red1-light");
+  $(".toggle-button").addClass("bg-green1-dark");
+  $(".toggle-button").html("찜하기");
+<% end %>

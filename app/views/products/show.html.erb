@@ -1,0 +1,77 @@
+<div>
+
+  <div data-height="380" class="caption shadow-huge">
+    <div class="caption-top left-15 top-15">
+      <!-- <div href="#" class="caption-author-left"> <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> -->
+    </div>
+    <div class="caption-bottom bottom-20 left-20">
+      <h1 class="color-white font-30 line-height-huge"><%= @product.title %></h1>
+      <p class="color-white opacity-50">
+        <%= @product.price %>
+      </p>
+    </div>
+    <div class="caption-overlay bg-black opacity-80"></div>
+    <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
+  </div>
+  <div class="content">
+    <% if current_user %>
+      <div class="one-half">
+        <%= link_to current_user.likes.where(likable_id: @product.id).present? ? "찜 취소" : "찜하기", toggle_product_path(@product), class: current_user.likes.where(likable_id: @product.id ).present? ?
+        "button button-m button-full button-margins round-small shadow-huge bg-red1-light bottom-30 toggle-button" : "button button-m button-full button-margins round-small shadow-huge bg-green1-dark bottom-30 toggle-button" %>
+      </div>
+      <div class="one-half last-column">
+        <%= link_to "구매하기", edit_order_path(@product), class: "button button-m button-full button-margins round-small shadow-huge bg-yellow1-light bottom-30" %>
+      </div>
+    <% else %>
+      <div class="one-half">
+        <a href="<%= new_user_session_path(notice: "로그인 후 이용해주세요") %>" class=" button button-m button-full button-margins round-small shadow-huge bg-green1-dark bottom-30 toggle-button">찜하기</a>
+      </div>
+      <div class="one-half last-column">
+        <a href="<%= new_user_session_path(notice: "로그인 후 이용해주세요") %>" class=" button button-m button-full button-margins round-small shadow-huge bg-yellow1-light bottom-30">구매하기</a>
+      </div>
+    <% end %>
+    <hr>
+    <p>
+      <%= simple_format(@product.short_desc) %>
+    </p>
+    <div class="divider"></div>
+  </div>
+  <a href="https://hirechance.org/product/esperanza-drip-bag-coffee-subscription/" target="_blank">
+    <div data-height="70" class="caption caption-margins round-medium">
+      <div class="caption-center left-20">
+        <p class="bottom-0">
+          <strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong>
+        </p>
+        <p class="bottom-0 font-10 under-heading"><%= @product.link %></p>
+      </div>
+      <div class="caption-center right-10">
+        <i class="fa fa-chevron-right float-right opacity-15"></i>
+      </div>
+      <div class="caption-overlay bg-black opacity-10"></div>
+    </div>
+  </a>
+
+  <div class="content">
+    <div class="divider"></div>
+    <h4>배송안내:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
+    <p>
+      <%= simple_format(@product.delivery) %>
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="content">
+    <div class="divider"></div>
+    <h4>교환/반품/환불:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
+    <p>
+      <%= simple_format(@product.desc) %>
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="divider divider-margins"></div>
+
+  <a href="<%= products_path %>" class="button button-full button-m button-margins round-small shadow-huge bg-yellow1-light bottom-30">뒤로가기</a>
+</div>

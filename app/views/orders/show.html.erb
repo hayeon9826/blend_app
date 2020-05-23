@@ -1,0 +1,57 @@
+<div class="divider divider-margins"></div>
+<div class="content">
+    <div class="content-title has-icon">
+        <h3>주문내역</h3>
+        <span class="color-highlight">주문 내역 확인</span>
+    </div>
+</div>
+<div class="content bottom-100" style="padding-bottom: 50px">
+  <%= link_to product_path(@product.id), class: "external" do %>
+    <div class="clear">
+      <div class="one-half small-half">
+        <div data-height="140" class="caption">
+            <div class="caption-image">
+              <% if @product.image.present? %>
+                <img src="<%= @product.image %>" class="responsive-image round-medium">
+              <% else %>
+                <img src="<%= @product.image_link.present? ? @product.image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+              <% end %>
+            </div>
+        </div>
+      </div>
+      <div class="one-half large-half last-column">
+          <h5 class="color-theme"><%= @product.title %></h5>
+          <span class="under-heading font-10 color-highlight"><%= @product.price %></span>
+          <p class="font-12 bottom-10">
+            <%= @product.desc.truncate(100) %>
+          </p>
+      </div>
+    </div>
+  <% end %>
+</div><Br><Br>
+  <div class="content">
+    <div class="content-title has-icon">
+      <h3>배송정보</h3>
+      <span class="color-highlight">배송정보 확인</span>
+    </div>
+  </div>
+  <div class="content bottom-50">
+    <div class="vcard-field"><strong>받는이</strong><br><%= @order.name %><i class="fa fa-user"></i></div>
+    <div class="vcard-field"><strong>우편번호</strong><Br><%= @order.zipcode %><i class="fa fa-home"></i></div>
+    <div class="vcard-field"><strong>기본주소</strong><Br><%= @order.address1 %><i class="fa fa-home"></i></div>
+    <div class="vcard-field no-border"><strong>상세주소</strong><Br> <%= @order.address2 %><i class="fa fa-home"></i></div>
+  </div>
+
+<div class="divider divider-margins"></div>
+<div class="content">
+  <div class="content-title has-icon">
+    <h3>포인트 적립</h3>
+    <span class="color-highlight">블렌드 확인</span>
+  </div>
+</div>
+<div class="content bottom-50">
+  <div class="vcard-field"><strong>적립 포인트</strong><br>10<i class="fa fa-checks"></i></div>
+  <div class="vcard-field"><strong>총 포인트</strong><Br><%= current_user.points.first.point %><i class="fa fa-check"></i></div>
+</div>
+<a href="/index" class="button button-full button-m button-margins round-small shadow-huge bg-yellow1-light bottom-30">메인으로</a>
+<div class="divider divider-margins"></div>

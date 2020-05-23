@@ -10,4 +10,12 @@ def get_point
   @point = current_user.points.first_or_create(point: 1000)
 end
 
+def get_cart
+  @cart = current_user.orders.cart.first_or_create
+end
+
+# def get_donation
+#   @donation = current_user.donations.create
+# end
+
 end

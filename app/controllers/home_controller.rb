@@ -3,11 +3,16 @@ class HomeController < ApplicationController
 
   def index
     @point = get_point
+    @donation = current_user.donations.sum("point")
   end
 
   def mypage
     @likes = current_user.likes.where(likable_type: "Lecture").all
     @point = get_point
+    @donations = current_user.donations
+    @blend_total = current_user.donations.sum("point")
+    @user_rank = User.order(:donation_total).reverse.take(5)
+    @current_rank = User.order(:donation_total).reverse.index(current_user) + 1
   end
 
   def my_lecture

@@ -1,0 +1,68 @@
+<div data-height="cover" class="caption bottom-30">
+    <div class="caption-center">
+        <div class="content bottom-0">
+          <%= link_to product_path(@product.id), class: "external" do %>
+          <div class="clear">
+            <div class="one-half small-half">
+              <div data-height="140" class="caption">
+                <div class="caption-image">
+                  <% if @product.image&.present? %>
+                    <img src="<%= @product.image%>" class="responsive-image round-medium">
+                  <% else %>
+                    <img src="<%= @product.image_link.present? ? @product.image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="one-half large-half last-column">
+              <h5 class="color-theme"><%= @product.title %></h5>
+              <span class="under-heading font-10 color-highlight"><%= @product.price %></span>
+              <p class="font-12 bottom-10">
+                <%= @product.desc.truncate(100) %>
+              </p>
+              <div class="one-half">
+                <a href="#" class="font-10">
+                  <i class="fa fa-shopping-cart right-10"></i>기부하기</a>
+              </div>
+              <div class="one-half last-column">
+                <a href="#" class="font-10">
+                  <i class="fa fa-heart color-red2-dark right-10"></i>찜하기</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div><hr><BR><Br><br>
+        <div class="divider divider-margins"></div>
+        <div class="divider divider-margins"></div>
+      <div style="padding: 30px; padding-top: 40px">
+        <h1 class="color-black font-30 top-30">배송정보 입력</h1>
+        <%= form_for @order, url: order_path(@order), method: :patch do |f| %>
+        <div class="input-style input-style-1 input-required top-20">
+          <span>이름</span>
+          <em>(필수)</em>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "이름"%>
+        </div>
+        <div class="input-style input-style-1 input-required">
+          <span>우편 주소</span>
+          <em>(필수)</em>
+          <%= f.text_field :zipcode, autofocus: true, autocomplete: "zipcode", placeholder: "우편번호" %>
+        </div>
+        <div class="input-style input-style-1 input-required">
+          <span>기본 주소</span>
+          <em>(필수)</em>
+          <%= f.text_field :address1, autofocus: true, autocomplete: "address1", placeholder: "기본주소" %>
+        </div>
+        <div class="input-style input-style-1 input-required">
+          <span>상세 주소</span>
+          <em>(필수)</em>
+          <%= f.text_field :address2, autofocus: true, autocomplete: "address2", placeholder: "상세주소" %>
+        </div>
+        <div class="clear"></div>
+
+        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
+          <%= f.submit "결제" , style: "color: white; background: #F6BB42"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

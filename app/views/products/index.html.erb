@@ -1,478 +1,280 @@
 <div class="content center-text">
-    <h1>난민 교육 기부로 이어지는 가치 소비</h1>
-    <span class="under-heading color-highlight font-10">당신의 작은 소비로 난민의 인생을 바꿀 수 있습니다</span>
-    <p class="boxed-text-huge top-10 bottom-30">
-        HireChance는 100% 공정한 전문 커피를 판매함으로써 전 세계 난민들을 위한 온라인 기술과 언어 교육을 위한 경력 구축에 자금을 지원합니다.
-    </p>
-    <a href="/subscription" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a>
+  <h1>난민 교육 기부로 이어지는 가치 소비</h1>
+  <span class="under-heading color-highlight font-10">당신의 작은 소비로 난민의 인생을 바꿀 수 있습니다</span>
+  <p class="boxed-text-huge top-10 bottom-30">
+    HireChance는 100% 공정한 전문 커피를 판매함으로써 전 세계 난민들을 위한 온라인 기술과 언어 교육을 위한 경력 구축에 자금을 지원합니다.
+  </p>
+  <a href="/subscription" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a>
 </div>
-        <div class="divider divider-margins"></div>
+<div class="divider divider-margins"></div>
 
-        <a href="#" data-menu="menu-instant-1" data-height="220" class="caption caption-margins round-medium shadow-huge">
-          <!-- <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/coffee_sample.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div> -->
+<% @products&.each do |product| %>
+  <a href="<%= product_path(product.id)%>" data-menu="menu-instant-1" data-height="220" class="caption caption-margins round-medium shadow-huge">
+    <!-- <div class="caption-top left-15 top-15"> <div class="caption-author-left"> <img src="images/coffee_sample.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> </div> -->
 
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">더보기 클릭</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">드립백 커피 정기구독</p>
-                <h1 class="color-white bolder font-32">Esperanza</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
-        </a>
-
-        <a href="#" data-menu="menu-instant-2" data-height="220" class="caption caption-margins round-medium shadow-huge">
-            <!-- <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div> -->
-
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">더보기 클릭</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">원두 커피 분말 정기구독</p>
-                <h1 class="color-white bolder font-32">Esperanza</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-18" style="background-image: url('/images/coffee_sample.png')"></div>
-        </a>
-
-        <a href="#" data-menu="menu-instant-3" data-height="220" class="caption caption-margins round-medium shadow-huge">
-            <!-- <div class="caption-top left-15 top-15">
-                <div class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div> -->
-
-            <div class="caption-top right-text top-10 right-15">
-                <span class="color-white ultrabold font-9">더보기 클릭</span>
-            </div>
-
-            <div class="caption-bottom left-20 bottom-20">
-                <p class="color-white opacity-70 bottom-0 font-12">원두커피 정기구독</p>
-                <h1 class="color-white bolder font-32">Esperanza</h1>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-12" style="background-image: url('/images/coffee_sample.png')"></div>
-        </a>
-
-    <!-- Modal View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-1"
-         class="menu-box"
-         data-menu-type="menu-box-modal"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
-
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <!-- <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div> -->
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Esperanza 드립백</h1>
-                <p class="color-white opacity-50">
-                    정기구독 ₩55,000 – ₩660,000
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
-        </div>
-        <div class="content">
-            <p>
-                Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다.
-                이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다.
-                이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '드립 백'커피 백으로 구성됩니다.
-                ‘원두’와‘원두커피 분말'을 구독 할 수도 있습니다.
-                이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
-            </p>
-            <div class="divider"></div>
-        </div>
-        <a href="https://hirechance.org/product/esperanza-drip-bag-coffee-subscription/" target="_blank">
-          <div data-height="70" class="caption caption-margins round-medium">
-              <div class="caption-center left-20">
-                  <p class="bottom-0"><strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong></p>
-                  <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
-              </div>
-              <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-              <div class="caption-overlay bg-black opacity-10"></div>
-          </div>
-        </a>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>배송안내:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
-            <p>
-              정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<Br>
-              상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<Br>
-              상품은 CJ대한통운으로 발송되며,
-              구매 후 2-5일 이내 수령이 가능합니다.<br>
-              (주말/공휴일 제외)
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>교환/반품/환불:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
-            <p>
-              HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
-              아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
-              – 고객님의 단순 변심에 의한 경우<br>
-              – 원두 제품을 분쇄해 주문 하셨을 경우<br>
-              – 제품이 개봉 되었거나 포장이 훼손되었을 경우
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+    <div class="caption-top right-text top-10 right-15">
+      <span class="color-white ultrabold font-9">더보기 클릭</span>
     </div>
 
-    <!-- Top View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-2"
-         class="menu-box"
-         data-menu-type="menu-box-top"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
-
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <!-- <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div> -->
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Esperanza 원두 커피 분말</h1>
-                <p class="color-white opacity-50">
-                    정기구독 ₩55,000 – ₩660,000
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-18" style="background-image: url('/images/coffee_sample.png')"></div>
-        </div>
-        <div class="content">
-            <p>
-              Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다.
-              이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다.
-              이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '원두 커피 분말'로 구성됩니다.
-              ‘원두’와‘드립백'을 구독 할 수도 있습니다.
-              이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <a href="https://hirechance.org/product/esperanza-ground-coffee-subscription/" target="_blank">
-          <div data-height="70" class="caption caption-margins round-medium">
-              <div class="caption-center left-20">
-                  <p class="bottom-0"><strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong></p>
-                  <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
-              </div>
-              <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-              <div class="caption-overlay bg-black opacity-10"></div>
-          </div>
-        </a>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>배송안내:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
-            <p>
-              정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<Br>
-              상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<Br>
-              상품은 CJ대한통운으로 발송되며,
-              구매 후 2-5일 이내 수령이 가능합니다.<br>
-              (주말/공휴일 제외)
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div class="content">
-            <div class="divider"></div>
-            <h4>교환/반품/환불:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
-            <p>
-              HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
-              아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
-              – 고객님의 단순 변심에 의한 경우<br>
-              – 원두 제품을 분쇄해 주문 하셨을 경우<br>
-              – 제품이 개봉 되었거나 포장이 훼손되었을 경우
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+    <div class="caption-bottom left-20 bottom-20">
+      <p class="color-white opacity-70 bottom-0 font-12"><%= product.sub_title %></p>
+      <h1 class="color-white bolder font-32"><%= product.title %></h1>
     </div>
+    <div class="caption-overlay bg-black opacity-70"></div>
+    <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
+  </a>
+<% end %>
 
+<!-- <a href="#" data-menu="menu-instant-2" data-height="220" class="caption caption-margins round-medium shadow-huge">
+  <div class="caption-top right-text top-10 right-15">
+    <span class="color-white ultrabold font-9">더보기 클릭</span>
+  </div>
 
-    <!-- Right View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <div id="menu-instant-3"
-         class="menu-box"
-         data-menu-type="menu-box-right"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
+  <div class="caption-bottom left-20 bottom-20">
+    <p class="color-white opacity-70 bottom-0 font-12">원두 커피 분말 정기구독</p>
+    <h1 class="color-white bolder font-32">Esperanza</h1>
+  </div>
+  <div class="caption-overlay bg-black opacity-70"></div>
+  <div class="caption-bg bg-18" style="background-image: url('/images/coffee_sample.png')"></div>
+</a>
 
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <!-- <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div> -->
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Esperanza 원두</h1>
-                <p class="color-white opacity-50">
-                    정기구독 ₩55,000 – ₩660,000
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-12" style="background-image: url('/images/coffee_sample.png')"></div>
-        </div>
-        <div class="content">
-            <p>
-              Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다.
-              이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다.
-              이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '원두'로 구성됩니다.
-              ‘원두 커피 분말’과 ‘드립백'을 구독 할 수도 있습니다.
-              이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
-            </p>
-            <div class="divider"></div>
-        </div>
+<a href="#" data-menu="menu-instant-3" data-height="220" class="caption caption-margins round-medium shadow-huge">
+  <div class="caption-top right-text top-10 right-15">
+    <span class="color-white ultrabold font-9">더보기 클릭</span>
+  </div>
 
-        <a href="https://hirechance.org/product/esperanza-whole-bean-coffee-subscription/" target="_blank">
-          <div data-height="70" class="caption caption-margins round-medium">
-              <div class="caption-center left-20">
-                  <p class="bottom-0"><strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong></p>
-                  <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
-              </div>
-              <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-              <div class="caption-overlay bg-black opacity-10"></div>
-          </div>
-        </a>
+  <div class="caption-bottom left-20 bottom-20">
+    <p class="color-white opacity-70 bottom-0 font-12">원두커피 정기구독</p>
+    <h1 class="color-white bolder font-32">Esperanza</h1>
+  </div>
+  <div class="caption-overlay bg-black opacity-70"></div>
+  <div class="caption-bg bg-12" style="background-image: url('/images/coffee_sample.png')"></div>
+</a> -->
 
-        <div class="content">
-            <div class="divider"></div>
-            <h4>배송안내:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
-            <p>
-              정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<Br>
-              상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<Br>
-              상품은 CJ대한통운으로 발송되며,
-              구매 후 2-5일 이내 수령이 가능합니다.<br>
-              (주말/공휴일 제외)
-            </p>
-            <div class="divider"></div>
-        </div>
+<!-- Modal View -->
+<!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
+<div id="menu-instant-1" class="menu-box" data-menu-type="menu-box-modal" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over">
 
-        <div class="content">
-            <div class="divider"></div>
-            <h4>교환/반품/환불:</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
-            <p>
-              HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
-              아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
-              – 고객님의 단순 변심에 의한 경우<br>
-              – 원두 제품을 분쇄해 주문 하셨을 경우<br>
-              – 제품이 개봉 되었거나 포장이 훼손되었을 경우
-            </p>
-            <div class="divider"></div>
-        </div>
-
-        <div class="divider divider-margins"></div>
-
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+  <div data-height="380" class="caption shadow-huge">
+    <div class="caption-top left-15 top-15">
+      <!-- <div href="#" class="caption-author-left"> <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> -->
     </div>
+    <div class="caption-top top-10 right-10">
+      <a href="#" class="close-menu icon icon-xs float-right">
+        <i class="fa fa-times-circle color-red2-light font-24"></i>
+      </a>
+    </div>
+    <div class="caption-bottom bottom-20 left-20">
+      <h1 class="color-white font-30 line-height-huge">Esperanza 드립백</h1>
+      <p class="color-white opacity-50">
+        정기구독 ₩55,000 – ₩660,000
+      </p>
+    </div>
+    <div class="caption-overlay bg-black opacity-80"></div>
+    <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
+  </div>
+  <div class="content">
+    <p>
+      Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다. 이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다. 이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '드립 백'커피 백으로 구성됩니다. ‘원두’와‘원두커피 분말'을 구독 할 수도 있습니다. 이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
+    </p>
+    <div class="divider"></div>
+  </div>
+  <a href="https://hirechance.org/product/esperanza-drip-bag-coffee-subscription/" target="_blank">
+    <div data-height="70" class="caption caption-margins round-medium">
+      <div class="caption-center left-20">
+        <p class="bottom-0">
+          <strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong>
+        </p>
+        <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
+      </div>
+      <div class="caption-center right-10">
+        <i class="fa fa-chevron-right float-right opacity-15"></i>
+      </div>
+      <div class="caption-overlay bg-black opacity-10"></div>
+    </div>
+  </a>
 
-    <!-- Bottom View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <!-- <div id="menu-instant-4"
-         class="menu-box"
-         data-menu-type="menu-box-bottom"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
+  <div class="content">
+    <div class="divider"></div>
+    <h4>배송안내:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
+    <p>
+      정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<br>
+      상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<br>
+      상품은 CJ대한통운으로 발송되며, 구매 후 2-5일 이내 수령이 가능합니다.<br>
+      (주말/공휴일 제외)
+    </p>
+    <div class="divider"></div>
+  </div>
 
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Introducing<br>Instant Screens</h1>
-                <p class="color-white opacity-50">
-                    Built for you with powerful features and flexibility.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-13"></div>
-        </div>
-        <div class="content">
-            <p>
-                We build the best mobile websites for you, making them feel as native as native can
-                get with features that are intutive and easy to use. Creating Mobile Templates has
-                been our passion and goal for the past 10 years, ever since the dawn of the first
-                Mobile Website.
-            </p>
-            <div class="divider"></div>
-        </div>
+  <div class="content">
+    <div class="divider"></div>
+    <h4>교환/반품/환불:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
+    <p>
+      HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
+      아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
+      – 고객님의 단순 변심에 의한 경우<br>
+      – 원두 제품을 분쇄해 주문 하셨을 경우<br>
+      – 제품이 개봉 되었거나 포장이 훼손되었을 경우
+    </p>
+    <div class="divider"></div>
+  </div>
 
-        <div data-height="70" class="caption caption-margins round-medium">
-            <div class="caption-center left-20">
-                <p class="bottom-0"><strong>Learn more about our products and Features.</strong></p>
-                <p class="bottom-0 font-10 under-heading">www.enableds.com</p>
-            </div>
-            <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-            <div class="caption-overlay bg-black opacity-10"></div>
-        </div>
+  <div class="divider divider-margins"></div>
 
-        <div class="content">
-            <div class="divider"></div>
-            <h4>Add Anything Here</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Any Feature, Any Content. Just Works.</p>
-            <p>
-                Believe it or not, this section is actually a menu, built using our ultra powerful mobile menu system. You can
-                add any type of content you want here.
-            </p>
-            <div class="divider"></div>
-        </div>
+  <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+</div>
 
-        <a href="#" data-height="130" class="caption round-medium shadow-huge caption-margins">
-            <div class="caption-center right-20 top-10">
-                <span href="#" class="button button-xs button-small round-huge bg-highlight float-right">View More</span>
-            </div>
-            <div class="caption-center left-20">
-                <h1 class="color-white">View More</h1>
-                <p class="under-heading color-white opacity-90 bottom-0 font-11">
-                    Find more Awesome Topics.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-14"></div>
-        </a>
+<!-- Top View -->
+<!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
+<div id="menu-instant-2" class="menu-box" data-menu-type="menu-box-top" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over">
 
-        <div class="divider divider-margins"></div>
+  <div data-height="380" class="caption shadow-huge">
+    <div class="caption-top left-15 top-15">
+      <!-- <div href="#" class="caption-author-left"> <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> -->
+    </div>
+    <div class="caption-top top-10 right-10">
+      <a href="#" class="close-menu icon icon-xs float-right">
+        <i class="fa fa-times-circle color-red2-light font-24"></i>
+      </a>
+    </div>
+    <div class="caption-bottom bottom-20 left-20">
+      <h1 class="color-white font-30 line-height-huge">Esperanza 원두 커피 분말</h1>
+      <p class="color-white opacity-50">
+        정기구독 ₩55,000 – ₩660,000
+      </p>
+    </div>
+    <div class="caption-overlay bg-black opacity-80"></div>
+    <div class="caption-bg bg-18" style="background-image: url('/images/coffee_sample.png')"></div>
+  </div>
+  <div class="content">
+    <p>
+      Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다. 이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다. 이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '원두 커피 분말'로 구성됩니다. ‘원두’와‘드립백'을 구독 할 수도 있습니다. 이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
+    </p>
+    <div class="divider"></div>
+  </div>
 
-        <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">Close Instant</a>
-    </div> -->
+  <a href="https://hirechance.org/product/esperanza-ground-coffee-subscription/" target="_blank">
+    <div data-height="70" class="caption caption-margins round-medium">
+      <div class="caption-center left-20">
+        <p class="bottom-0">
+          <strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong>
+        </p>
+        <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
+      </div>
+      <div class="caption-center right-10">
+        <i class="fa fa-chevron-right float-right opacity-15"></i>
+      </div>
+      <div class="caption-overlay bg-black opacity-10"></div>
+    </div>
+  </a>
 
+  <div class="content">
+    <div class="divider"></div>
+    <h4>배송안내:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
+    <p>
+      정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<br>
+      상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<br>
+      상품은 CJ대한통운으로 발송되며, 구매 후 2-5일 이내 수령이 가능합니다.<br>
+      (주말/공휴일 제외)
+    </p>
+    <div class="divider"></div>
+  </div>
 
-    <!-- Left View -->
-    <!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
-    <!-- <div id="menu-instant-5"
-         class="menu-box"
-         data-menu-type="menu-box-left"
-         data-menu-height="100%"
-         data-menu-width="100%"
-         data-menu-effect="menu-over">
+  <div class="content">
+    <div class="divider"></div>
+    <h4>교환/반품/환불:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
+    <p>
+      HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
+      아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
+      – 고객님의 단순 변심에 의한 경우<br>
+      – 원두 제품을 분쇄해 주문 하셨을 경우<br>
+      – 제품이 개봉 되었거나 포장이 훼손되었을 경우
+    </p>
+    <div class="divider"></div>
+  </div>
 
-        <div data-height="380" class="caption shadow-huge">
-            <div class="caption-top left-15 top-15">
-                <div href="#" class="caption-author-left">
-                    <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                    <strong>Enabled</strong>
-                    <span>2 Days Ago</span>
-                </div>
-            </div>
-            <div class="caption-top top-10 right-10">
-                <a href="#" class="close-menu icon icon-xs float-right"><i class="fa fa-times-circle color-red2-light font-24"></i></a>
-            </div>
-            <div class="caption-bottom bottom-20 left-20">
-                <h1 class="color-white font-30 line-height-huge">Introducing<br>Instant Screens</h1>
-                <p class="color-white opacity-50">
-                    Built for you with powerful features and flexibility.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-14"></div>
-        </div>
-        <div class="content">
-            <p>
-                We build the best mobile websites for you, making them feel as native as native can
-                get with features that are intutive and easy to use. Creating Mobile Templates has
-                been our passion and goal for the past 10 years, ever since the dawn of the first
-                Mobile Website.
-            </p>
-            <div class="divider"></div>
-        </div>
+  <div class="divider divider-margins"></div>
 
-        <div data-height="70" class="caption caption-margins round-medium">
-            <div class="caption-center left-20">
-                <p class="bottom-0"><strong>Learn more about our products and Features.</strong></p>
-                <p class="bottom-0 font-10 under-heading">www.enableds.com</p>
-            </div>
-            <div class="caption-center right-10"><i class="fa fa-chevron-right float-right opacity-15"></i></div>
-            <div class="caption-overlay bg-black opacity-10"></div>
-        </div>
+  <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+</div>
 
-        <div class="content">
-            <div class="divider"></div>
-            <h4>Add Anything Here</h4>
-            <p class="color-highlight font-10 under-heading bottom-10">Any Feature, Any Content. Just Works.</p>
-            <p>
-                Believe it or not, this section is actually a menu, built using our ultra powerful mobile menu system. You can
-                add any type of content you want here.
-            </p>
-            <div class="divider"></div>
-        </div>
+<!-- Right View -->
+<!-- Remember to use a unique ID and target it using the data-menu="menu-instant-1" on your button-->
+<div id="menu-instant-3" class="menu-box" data-menu-type="menu-box-right" data-menu-height="100%" data-menu-width="100%" data-menu-effect="menu-over">
 
-        <a href="#" data-height="130" class="caption round-medium shadow-huge caption-margins">
-            <div class="caption-center right-20 top-10">
-                <span href="#" class="button button-xs button-small round-huge bg-highlight float-right">View More</span>
-            </div>
-            <div class="caption-center left-20">
-                <h1 class="color-white">View More</h1>
-                <p class="under-heading color-white opacity-90 bottom-0 font-11">
-                    Find more Awesome Topics.
-                </p>
-            </div>
-            <div class="caption-overlay bg-black opacity-70"></div>
-            <div class="caption-bg bg-17"></div>
-        </a> -->
+  <div data-height="380" class="caption shadow-huge">
+    <div class="caption-top left-15 top-15">
+      <!-- <div href="#" class="caption-author-left"> <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> -->
+    </div>
+    <div class="caption-top top-10 right-10">
+      <a href="#" class="close-menu icon icon-xs float-right">
+        <i class="fa fa-times-circle color-red2-light font-24"></i>
+      </a>
+    </div>
+    <div class="caption-bottom bottom-20 left-20">
+      <h1 class="color-white font-30 line-height-huge">Esperanza 원두</h1>
+      <p class="color-white opacity-50">
+        정기구독 ₩55,000 – ₩660,000
+      </p>
+    </div>
+    <div class="caption-overlay bg-black opacity-80"></div>
+    <div class="caption-bg bg-12" style="background-image: url('/images/coffee_sample.png')"></div>
+  </div>
+  <div class="content">
+    <p>
+      Esperanza는 Quindio 지역의 Insula 농장에서 생산 된 맛있는 원두 커피입니다. 이 커피는 J. Hernandez에 의해 전문적으로 재배되었으며 컵핑 점수는 85.75입니다. 이 제품은 매주 또는 격주로 배달되는 1, 3 또는 6 개월의 구독으로 10 개의 '원두'로 구성됩니다. ‘원두 커피 분말’과 ‘드립백'을 구독 할 수도 있습니다. 이 커피 판매의 25 %가 난민 경력 개발 교육에 직접 기부됩니다.
+    </p>
+    <div class="divider"></div>
+  </div>
 
-        <div class="divider divider-margins"></div>
+  <a href="https://hirechance.org/product/esperanza-whole-bean-coffee-subscription/" target="_blank">
+    <div data-height="70" class="caption caption-margins round-medium">
+      <div class="caption-center left-20">
+        <p class="bottom-0">
+          <strong>아래 링크에서 더욱 자세한 정보를 확인하세요</strong>
+        </p>
+        <p class="bottom-0 font-10 under-heading">www.hirechance.com</p>
+      </div>
+      <div class="caption-center right-10">
+        <i class="fa fa-chevron-right float-right opacity-15"></i>
+      </div>
+      <div class="caption-overlay bg-black opacity-10"></div>
+    </div>
+  </a>
+
+  <div class="content">
+    <div class="divider"></div>
+    <h4>배송안내:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Delivery</p>
+    <p>
+      정오까지 결제 완료된 주문에 한해 당일 발송되며, 주말/공휴일은 발송이 없습니다<br>
+      상품의 재고 상황에 따라 하루정도 지연 발송 될 수 있습니다.<br>
+      상품은 CJ대한통운으로 발송되며, 구매 후 2-5일 이내 수령이 가능합니다.<br>
+      (주말/공휴일 제외)
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="content">
+    <div class="divider"></div>
+    <h4>교환/반품/환불:</h4>
+    <p class="color-highlight font-10 under-heading bottom-10">Exchange / Return / Refund:</p>
+    <p>
+      HireChance 의 모든 원두 제품은 로스팅 후 7일 이내에 판매합니다.<br>
+      아래와 같은 경우 교환/반품/환불이 불가능하오니 주문 시 참고해 주시기 바랍니다.<br>
+      – 고객님의 단순 변심에 의한 경우<br>
+      – 원두 제품을 분쇄해 주문 하셨을 경우<br>
+      – 제품이 개봉 되었거나 포장이 훼손되었을 경우
+    </p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="divider divider-margins"></div>
+
+  <a href="#" class="close-menu button button-full button-m button-margins round-small shadow-huge bg-red2-dark bottom-30">닫기</a>
+</div>
+<div class="divider divider-margins"></div>

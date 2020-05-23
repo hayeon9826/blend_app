@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 
   root 'home#cover'
 
-  resources :products
+  resources :products do
+    member do
+      get :toggle
+    end
+  end
+
   resources :lectures do
     get :search
     member do
@@ -24,6 +29,12 @@ Rails.application.routes.draw do
   end
 
   resources :comments
+  resources :orders
+  resources :donations do
+    collection do
+      get :success
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -9,10 +9,56 @@
 <div class="content bottom-0">
     <a class="embedly-card" data-card-controls="0" href="<%= @lecture.preview_link.present? ? @lecture.preview_link : "https://alison.com/courses/microsoft-excel-2013-for-beginners-start-your-excel-journey/content?event=login" %>"></a>
 </div>
+<div data-height="150" class="caption caption-margins round-medium shadow-huge bottom-40">
+    <div class="caption-top top-25 left-15">
+        <h4 class="color-white line-height-large">
+          다음 사람이 강의를 들으려면<br>
+          329 블렌드가 필요해요<br>
+        </h4>
+    </div>
+    <!-- <div class="caption-top top-20 left-15">
+        <a href="#" class="button button-xxs round-huge shadow-huge float-right top-15 right-20 bg-white color-black">HIGH PRIORITY</a>
+    </div> -->
+    <div class="caption-bottom bottom-20 left-15 right-15">
+        <p class="bottom-0 font-10 color-white">63% 달성</p>
+        <div class="progress-bar-wrapper"
+             data-progress-complete="63"
+             data-progress-height="3"
+             data-progress-border="1"
+             data-progress-bar-color="#FFF"
+             data-progress-bar-background="rgba(255,255,255,0.2)">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <div class="caption-overlay bg-red2-dark opacity-85"></div>
+</div>
+<div data-height="150" class="caption caption-margins round-medium shadow-huge bottom-40">
+    <div class="caption-top top-25 left-15">
+        <h4 class="color-white line-height-large">
+          모든 대기자가 강의를 들으려면 <br>
+          15,671 블렌드가 필요해요.
+        </h4>
+    </div>
+    <!-- <div class="caption-top top-20 left-15">
+        <a href="#" class="button button-xxs round-huge shadow-huge float-right top-15 right-20 bg-white color-black">HIGH PRIORITY</a>
+    </div> -->
+    <div class="caption-bottom bottom-20 left-15 right-15">
+        <p class="bottom-0 font-10 color-white">2% 달성</p>
+        <div class="progress-bar-wrapper"
+             data-progress-complete="2"
+             data-progress-height="3"
+             data-progress-border="1"
+             data-progress-bar-color="#FFF"
+             data-progress-bar-background="rgba(255,255,255,0.2)">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    <div class="caption-overlay bg-green2-dark opacity-85"></div>
+</div>
 <% if current_user&.user_type == "Learner" %>
 <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%> Registered</span></div>
-  <% if current_user&.has_like?(@lecture) %>
-      <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
+  <% if current_user&.likes.where(likable_id: @lecture.id).present?  %>
+      <%= link_to toggle_lecture_path(@lecture.id) do %>
       <div class="content red">
         <div class="chip chip-small bg-gray1-dark shadow-large">
             <i class="fa fa-check bg-green1-dark"></i>
@@ -51,7 +97,7 @@
       </div>
     <% end %>
   <% else %>
-  <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
+  <%= link_to toggle_lecture_path(@lecture.id) do %>
     <div class="content green">
       <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
         <div
@@ -91,25 +137,25 @@
   <% end %>
 <% end %>
 <% elsif current_user&.user_type == "커피 구매자"%>
-  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명 기부함</span></div>
-  <% if current_user&.has_like?(@lecture) %>
-  <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
+  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명이 관심있습니다.</span></div>
+  <% if current_user&.likes.where(likable_id: @lecture.id).present? %>
+  <%= link_to toggle_lecture_path(@lecture.id) do %>
     <div class="content red">
       <div class="chip chip-small bg-gray1-dark shadow-large">
           <i class="fa fa-check bg-green1-dark"></i>
-          <span class="color-black">기부됨</span>
+          <span class="color-black">관심 강의 등록됨</span>
       </div>
       <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
         <div
         style="color: white;"
            data-snack-id="snack-3"
            data-snack-color="bg-red2-dark"
-           data-snack-text="강의 기부를 취소하셨습니다."
+           data-snack-text="강의 찜을 취소하셨습니다."
            data-snack-icon="fa fa-times"
            class="no-border"
            >
             <i class="fa fa-times color-red2-dark"></i>
-            <span>강의 기부 취소</span>
+            <span>관심 강의 취소</span>
             <i class="fa fa-angle-right"></i>
         </div>
       </div>
@@ -120,27 +166,30 @@
           style="color: white;"
            data-snack-id="snack-1"
            data-snack-color="bg-green1-dark"
-           data-snack-text="강의를 기부하셨습니다."
+           data-snack-text="강의를 찜하셨습니다."
            data-snack-icon="fa fa-check">
             <i class="fa fa-check color-green1-dark"></i>
-            <span>강의 기부하기</span>
+            <span>관심 강의 등록</span>
             <i class="fa fa-angle-right"></i>
         </div>
       </div>
     </div>
+    <div>
+      <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: black;" %>
+    </div>
   <% end %>
   <% else %>
-    <%= link_to toggle_lecture_path(@lecture.id), remote: true do %>
+    <%= link_to toggle_lecture_path(@lecture.id) do %>
       <div class="content green">
         <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-mint-dark top-30">
           <div
             style="color: white;"
              data-snack-id="snack-1"
              data-snack-color="bg-green1-dark"
-             data-snack-text="강의를 기부하셨습니다."
+             data-snack-text="강의를 찜하셨습니다."
              data-snack-icon="fa fa-check">
               <i class="fa fa-check color-green1-dark"></i>
-              <span>강의 기부하기</span>
+              <span>관심 강의 등록</span>
               <i class="fa fa-angle-right"></i>
           </div>
         </div>
@@ -148,32 +197,35 @@
       <div class="content red" style="display: none;">
         <div class="chip chip-small bg-gray1-dark shadow-large">
             <i class="fa fa-check bg-green1-dark"></i>
-            <span class="color-black">기부됨</span>
+            <span class="color-black">관심 강의 취소</span>
         </div>
         <div class="back-button button button-full button-m round-small shadow-huge bg-highlight bg-red1-light top-30">
           <div
           style="color: white;"
              data-snack-id="snack-3"
              data-snack-color="bg-red2-dark"
-             data-snack-text="강의 기부를 취소하셨습니다."
+             data-snack-text="강의 찜을 취소하셨습니다."
              data-snack-icon="fa fa-times"
              class="no-border"
              >
               <i class="fa fa-times color-red2-dark"></i>
-              <span>강의 기부 취소</span>
+              <span>관심 강의 등록</span>
               <i class="fa fa-angle-right"></i>
           </div>
         </div>
       </div>
+      <div>
+        <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: black;" %>
+      </div>
     <% end %>
   <% end %>
 <% else %>
-  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명 기부함</span></div>
+  <div class="content"><i class="fa fa-check color-green1-dark"></i> <span class="font-500 bottom-0"><%= @lecture.likes.count%>명이 관심있습니다</span></div>
 <div class="content" >
   <div class="chip chip-small bg-dark2-dark shadow-large">
     <%= link_to new_user_session_path do %>
       <i class="fa fa-check bg-green1-dark"></i>
-      <span class="color-white">로그인 후 기부 가능합니다.</span>
+      <span class="color-white">로그인 후 기부 이용 합니다.</span>
     <% end %>
   </div>
 </div>
@@ -267,7 +319,7 @@
     <% if current_user&.user_type == "Learner"%>
       <div class="clear"></div>
       <h3>Leave Comments</h3>
-      <%= form_for Comment.new, class: "external", remote: true do |f| %>
+      <%= form_for Comment.new, class: "external" do |f| %>
         <div class="form-field form-text">
             <%= f.text_area :content, class: "commentTextarea", required: true%>
             <%= f.hidden_field :user_id, value: current_user.id %>
