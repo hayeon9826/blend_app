@@ -648,6 +648,19 @@ h5{font-size:17px; line-height:22px}
     bottom:0px;
 }
 
+.header .header-title-2, .header-nav .header-title-2{
+	position:absolute;
+	height:55px;
+	line-height:55px;
+    font-family:'IBM Plex Sans', sans-serif;
+	font-size:12px;
+	color:#FFF;
+	font-weight:700;
+	z-index:1;
+    text-transform:uppercase;
+    bottom:0px;
+}
+
 
 .header-subtitle{
     font-size:13px!important;
@@ -720,6 +733,7 @@ h5{font-size:17px; line-height:22px}
 .header-logo-left .header-icon-4{right:135px;}
 .header-logo-left .header-logo{left:0px!important; margin-left:0px!important;}
 .header-logo-left .header-title{left:15px!important; margin-left:0px!important;}
+.header-logo-left .header-title-2{left:40px!important; margin-left:0px!important;}
 
 .header-logo-right .header-icon-1{left:0px;}
 .header-logo-right .header-icon-2{left:45px;}
@@ -4015,6 +4029,7 @@ input[type=file]{
 .theme-dark .menu .nav .active-nav span,
 .theme-dark .header .header-icon,
 .theme-dark .header .header-title,
+.theme-dark .header .header-title-2,
 .theme-dark .color-theme,
 .theme-dark .countdown div,
 .theme-dark .link-list-3 span,
@@ -4167,4 +4182,5 @@ input[type=file]{
 
 .theme-light .header{background-color:#FFF;}
 .theme-light .header-title{color:#1f1f1f;}
+.theme-light .header-title-2{color:#1f1f1f;}
 .theme-light .header-icon{color:#1f1f1f;}

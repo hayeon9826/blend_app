@@ -1,83 +1,95 @@
 <div class="content center-text">
-    <h1><%= @lectures&.last&.category%> 강의 리스트</h1>
+  <h1><%= @lectures&.last&.category%>
+    강의 리스트</h1>
 </div>
-        <div class="divider divider-margins"></div>
-        <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
-        <div class="row">
-          <i class="fa fa-search"></i>
-          <%= f.search_field :title_or_address_or_category_cont, placeholder: "강의 제목, 내용, 카테고리를 검색하세요", class: "col-9" %>
-          <i class="fa fa-times disabled color-red2-dark"></i>
-        </div>
-      <% end %>
-      <% if @q.title_or_address_or_category_cont.present? %>
-      <div class="divider divider-margins"></div>
-        <div class="content">
-            <div class="content-title has-icon">
-                <h3><%= @q.title_or_address_or_category_cont %> 검색결과</h3>
-                <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
-            </div>
-        </div>
-      <% end %>
-      <% @search_lecture&.each do |p| %>
-        <%= link_to lecture_path(p.id), class: "external" do %>
-          <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
-              <div class="caption-top left-15 top-15">
-                  <div class="caption-author-left">
-                      <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                      <strong><%= p.category %></strong>
-                      <span><%= p.category %></span>
-                  </div>
-              </div>
+<div class="divider divider-margins"></div>
+  <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
+  <div class="row">
+    <i class="fa fa-search"></i>
+    <%= f.search_field :title_or_address_or_category_cont, placeholder: "강의 제목, 내용, 카테고리를 검색하세요", class: "col-9" %>
+    <i class="fa fa-times disabled color-red2-dark"></i>
+  </div>
+  <% end %>
+  <div class="content bottom-0">
+    <div class="tab-controls tabs-round tab-animated tabs-small tabs-rounded shadow-large"
+         data-tab-items="4"
+         data-tab-active="bg-highlight color-white">
+        <a href="/lectures/0/search" data-tab-active data-tab="tab-1">언어</a>
+        <a href="/lectures/1/search" data-tab="tab-2">창업</a>
+        <a href="/lectures/2/search" data-tab="tab-2">직무</a>
+        <a href="/lectures/3/search" data-tab="tab-3">코딩</a>
+    </div><br><br>
+  </div>
+  <% if @q.title_or_address_or_category_cont.present? %>
+  <div class="divider divider-margins"></div>
+  <div class="content">
+    <div class="content-title has-icon">
+      <h3><%= @q.title_or_address_or_category_cont %>
+        검색결과</h3>
+      <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
+    </div>
+  </div>
+  <% end %>
+  <% @search_lecture&.each do |p| %>
+  <%= link_to lecture_path(p.id), class: "external" do %>
+  <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+    <div class="caption-top left-15 top-15">
+      <div class="caption-author-left">
+        <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+        <strong><%= p.category %></strong>
+        <span><%= p.category %></span>
+      </div>
+    </div>
 
-              <div class="caption-top right-text top-10 right-15">
-                  <span class="color-white ultrabold font-9">더보기</span>
-              </div>
+    <div class="caption-top right-text top-10 right-15">
+      <span class="color-white ultrabold font-9">더보기</span>
+    </div>
 
-              <div class="caption-bottom left-20 bottom-20">
-                  <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
-                  <h1 class="color-white bolder font-32"><%= p.title %></h1>
-              </div>
-              <div class="caption-overlay bg-black opacity-70"></div>
-              <div class="caption-bg bg-12"></div>
-          </a>
-        <% end %>
-      <% end %>
-        <div class="divider divider-margins"></div>
-        <div class="content">
-            <div class="content-title has-icon">
-                <h3>최신 업데이트</h3>
-                <span class="color-highlight">가장 최근 추가된 강의입니다.</span>
-            </div>
-        </div>
-        <% @lectures&.each do |p| %>
-          <%= link_to lecture_path(p.id), class: "external" do %>
-            <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
-                <div class="caption-top left-15 top-15">
-                    <div class="caption-author-left">
-                        <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                        <strong><%= p.category %></strong>
-                        <span><%= p.category %></span>
-                    </div>
-                </div>
+    <div class="caption-bottom left-20 bottom-20">
+      <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
+      <h1 class="color-white bolder font-32"><%= p.title %></h1>
+    </div>
+    <div class="caption-overlay bg-black opacity-70"></div>
+    <div class="caption-bg bg-12"></div>
+  </a>
+  <% end %>
+  <% end %>
+  <div class="divider divider-margins"></div>
+  <div class="content">
+  <div class="content-title has-icon">
+  <h3>최신 업데이트</h3>
+  <span class="color-highlight">가장 최근 추가된 강의입니다.</span>
+  </div>
+  </div>
+  <% @lectures&.each do |p| %>
+  <%= link_to lecture_path(p.id), class: "external" do %>
+  <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+  <div class="caption-top left-15 top-15">
+    <div class="caption-author-left">
+      <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+      <strong><%= p.category %></strong>
+      <span><%= p.category %></span>
+    </div>
+  </div>
 
-                <div class="caption-top right-text top-10 right-15">
-                    <span class="color-white ultrabold font-9">더보기</span>
-                </div>
+  <div class="caption-top right-text top-10 right-15">
+    <span class="color-white ultrabold font-9">더보기</span>
+  </div>
 
-                <div class="caption-bottom left-20 bottom-20">
-                    <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
-                    <h1 class="color-white bolder font-32"><%= p.title %></h1>
-                </div>
-                <div class="caption-overlay bg-black opacity-70"></div>
-                <% if p.image.present? %>
-                  <%= image_tag(p.image.large.url)%>
-                <% elsif p.image_link.present?%>
-                  <img class="caption-bg bg-12" src="<%= p.image_link%>">
-                <% else %>
-                  <div class="caption-bg bg-12"></div>
-                <% end %>
-            </a>
-          <% end %>
-        <% end %>
+  <div class="caption-bottom left-20 bottom-20">
+    <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
+    <h1 class="color-white bolder font-32"><%= p.title %></h1>
+  </div>
+  <div class="caption-overlay bg-black opacity-70"></div>
+  <% if p.image.present? %>
+    <%= image_tag(p.image.large.url)%>
+    <% elsif p.image_link.present?%>
+      <img class="caption-bg bg-12" src="<%= p.image_link%>">
+    <% else %>
+      <div class="caption-bg bg-12"></div>
+    <% end %>
+  </a>
+  <% end %>
+<% end %>
 
-        <div class="divider divider-margins"></div>
+<div class="divider divider-margins"></div>
