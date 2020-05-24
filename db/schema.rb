@@ -12,16 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_05_23_154758) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.string "author_type"
-    t.bigint "author_id"
+    t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -43,9 +40,9 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "commentable_type"
-    t.bigint "commentable_id"
+    t.integer "commentable_id"
     t.string "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
   end
 
   create_table "donations", force: :cascade do |t|
-    t.bigint "lecture_id"
-    t.bigint "user_id"
+    t.integer "lecture_id"
+    t.integer "user_id"
     t.integer "point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,9 +75,9 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "likable_type"
-    t.bigint "likable_id"
+    t.integer "likable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
@@ -88,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.integer "status"
     t.integer "total"
     t.string "zipcode"
@@ -98,13 +95,13 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.bigint "product_id"
+    t.integer "product_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "points", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "point", default: 1000
@@ -139,9 +136,4 @@ ActiveRecord::Schema.define(version: 2020_05_23_154758) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "donations", "lectures"
-  add_foreign_key "donations", "users"
-  add_foreign_key "likes", "users"
-  add_foreign_key "orders", "users"
-  add_foreign_key "points", "users"
 end
