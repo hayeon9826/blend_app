@@ -1,0 +1,17 @@
+      <div class="footer-menu footer-4-icons footer-menu-center-icon">
+          <a href="/index" class="menu-home-index"><i class="fa fa-home"></i><span>Home</span></a>
+          <a href="/lectures" class="menu-lectures-index"><i class="fa fa-shopping-cart"></i><span>Register</span></a>
+          <a href="/mypage" class="menu-home-mypage"><i class="fa fa-graduation-cap"></i><span>My Lectures</span></a>
+          <a href="/menu" class="menu-home-menu"><i class="fa fa-bars"></i><span>메뉴</span></a>
+          <div class="clear"></div>
+      </div>
+    </div>
+
+
+<script>
+
+  $(document).ready(function(){
+    $('.menu-<%= controller_name %>-<%= action_name %>').addClass('active-nav');
+  })
+
+</script>

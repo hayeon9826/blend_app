@@ -30,7 +30,7 @@
             <div class="progress-bar"></div>
         </div>
     </div>
-    <div class="caption-overlay bg-red2-dark opacity-85"></div>
+    <div class="caption-overlay bg-yellow1-dark opacity-85"></div>
 </div>
 <div data-height="150" class="caption caption-margins round-medium shadow-huge bottom-40">
     <div class="caption-top top-25 left-15">
@@ -175,7 +175,7 @@
       </div>
     </div>
     <div>
-      <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: black;" %>
+      <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: #FFC700;" %>
     </div>
   <% end %>
   <% else %>
@@ -215,7 +215,7 @@
         </div>
       </div>
       <div>
-        <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: black;" %>
+        <%= link_to "기부하기", new_donation_path(lecture_id: @lecture.id), class: "button button-m button-full button-margins round-small shadow-huge bottom-30", style: "background-color: #FFC700;" %>
       </div>
     <% end %>
   <% end %>
@@ -319,16 +319,14 @@
     <% if current_user&.user_type == "Learner"%>
       <div class="clear"></div>
       <h3>Leave Comments</h3>
-      <%= form_for Comment.new, class: "external" do |f| %>
+      <%= form_for Comment.new, class: "external", remote: true do |f| %>
         <div class="form-field form-text">
             <%= f.text_area :content, class: "commentTextarea", required: true%>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :commentable_type, value: "Lecture"%>
             <%= f.hidden_field :commentable_id, value: @lecture.id%>
         </div>
-        <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
-            <%= f.submit "Submit", style: "color: white; background: #F6BB42"%>
-        </div>
+      <%= f.submit "Submit", style: "color: white; background: #F6BB42; width: 100%", class: "back-button button button-full button-m round-small shadow-huge bg-highlight top-30" %>
       <% end %>
       <div class="clear"></div>
     <% end %>
@@ -344,9 +342,13 @@
   <div class="content">
       <div class="review-1">
           <% if current_user&.user_type == "Learner"%>
-          No Reviews
+          <div class="commentList">
+            <span class="no-review">No Reviews.</span>
+          </div>
           <% else %>
-          리뷰가 없습니다.
+        <div class="commentList">
+          <span class="no-review">리뷰가 없습니다.</span>
+        </div>
           <% end %>
       </div>
   </div>

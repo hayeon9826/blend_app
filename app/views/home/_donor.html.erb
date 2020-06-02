@@ -16,8 +16,9 @@
   </p>
   <div class="content">
     <div class="alert alert-small round-small shadow-huge bg-yellow1-dark">
-        <i class="fa fa-check"></i>
-        <span>나의 순위: <%= @current_rank %></span>
+      <i class="fa fa-check"></i>
+      <span>나의 순위:
+        <%= @current_rank %></span>
     </div>
   </div>
   <table class="table-borders shadow-huge round-medium">
@@ -52,43 +53,38 @@
     </tr>
     <% @donations.each do |p| %>
       <%= link_to lecture_path(p), class: "external" do %>
-        <tr>
-          <td><%= p.lecture.title %></td>
-          <td class="color-blue1-dark"><%= p.point %></td>
-        </tr>
-      <% end %>
+      <tr>
+        <td><%= p.lecture.title %></td>
+        <td class="color-blue1-dark"><%= p.point %></td>
+      </tr>
     <% end %>
-  </table>
+  <% end %>
+</table>
 </div>
 
 <div class="divider divider-margins"></div>
 <div class="content">
-  <h2>서비스 누적 기부 금액</h2>
-  <p>
-    블렌드를 통해 난민 교육에 기부된 총 금액
-  </p>
+<h2>서비스 누적 기부 금액</h2>
+<p>
+  블렌드를 통해 난민 교육에 기부된 총 금액
+</p>
   <div data-height="150" class="caption caption-margins round-medium shadow-huge bottom-40">
-      <div class="caption-top top-25 left-15">
-          <h4 class="color-white line-height-large">
-            현재까지 총 <%= @blend_total %> 블렌드를<br>
-            기부하셨습니다!<br>
-          </h4>
+    <div class="caption-top top-25 left-15">
+      <h4 class="color-white line-height-large">
+        현재까지 총
+        <%= @blend_total %>
+        블렌드를<br>
+        기부하셨습니다!<br>
+      </h4>
+    </div>
+    <!-- <div class="caption-top top-20 left-15"> <a href="#" class="button button-xxs round-huge shadow-huge float-right top-15 right-20 bg-white color-black">HIGH PRIORITY</a> </div> -->
+    <div class="caption-bottom bottom-20 left-15 right-15">
+      <p class="bottom-0 font-10 color-white">63% 증가!</p>
+      <div class="progress-bar-wrapper" data-progress-complete="63" data-progress-height="3" data-progress-border="1" data-progress-bar-color="#FFF" data-progress-bar-background="rgba(255,255,255,0.2)">
+        <div class="progress-bar"></div>
       </div>
-      <!-- <div class="caption-top top-20 left-15">
-          <a href="#" class="button button-xxs round-huge shadow-huge float-right top-15 right-20 bg-white color-black">HIGH PRIORITY</a>
-      </div> -->
-      <div class="caption-bottom bottom-20 left-15 right-15">
-          <p class="bottom-0 font-10 color-white">63% 증가!</p>
-          <div class="progress-bar-wrapper"
-               data-progress-complete="63"
-               data-progress-height="3"
-               data-progress-border="1"
-               data-progress-bar-color="#FFF"
-               data-progress-bar-background="rgba(255,255,255,0.2)">
-              <div class="progress-bar"></div>
-          </div>
-      </div>
-      <div class="caption-overlay bg-green2-dark opacity-85"></div>
+    </div>
+    <div class="caption-overlay bg-green2-dark opacity-85"></div>
   </div>
 </div>
 <div class="divider divider-margins"></div>
@@ -101,80 +97,92 @@ class="gallery-view-3-activate"><i class="fa fa-bars"></i></a> <div class="clear
     <h3>나의 관심 강의</h3>
     <span class="color-highlight"><%= current_user&.name %>님의 강의 목록입니다</span>
     <%= link_to my_lecture_path do %>
-      <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+    <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
+  <% end %>
+  </div>
+</div>
+<div class="content bottom-0">
+<% if @likes.present? %>
+  <% @likes.last(3).each do |p| %>
+      <%= link_to lecture_path(Lecture.find(p.likable_id).id), class: "external" do %>
+      <div class="clear">
+        <div class="one-half small-half">
+          <div data-height="140" class="caption">
+            <div class="caption-image">
+              <% if Lecture.find(p.likable_id).image.present? %>
+                <img src="<%= Lecture.find(p.likable_id).image.large.url %>" class="responsive-image round-medium">
+              <% else %>
+                <img src="<%= Lecture.find(p.likable_id).image_link.present? ? Lecture.find(p.likable_id).image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="one-half large-half last-column">
+          <h5 class="color-theme"><%= Lecture.find(p.likable_id).title %></h5>
+          <span class="under-heading font-10 color-highlight"><%= Lecture.find(p.likable_id).category %></span>
+          <p class="font-12 bottom-10">
+            <%= Lecture.find(p.likable_id).address.truncate(50) %>
+          </p>
+          <div class="one-half">
+            <i class="fa fa-shopping-cart right-10"></i>기부하기
+          </div>
+          <div class="one-half last-column">
+            <i class="fa fa-heart color-red2-dark right-10"></i>찜하기
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+  기부한 강의가 없습니다
+  </div>
+<% end %>
+</div>
+<Br><Br><br><Br><Br><br><Br>
+<div class="divider divider-margins bottom-30"></div>
+
+
+<div class="content">
+  <div class="content-title has-icon">
+  <h3>수강생들의 한줄</h3>
+    <span class="color-highlight"><%= current_user&.name %>님의 강의 수강생들의 강의평입니다.</span>
+    <%= link_to my_comment_path do %>
+    <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
     <% end %>
   </div>
 </div>
-<% if @likes.present? %>
-<% @likes.last(3).each do |p| %>
-  <a href="lectures/<%= p.likable_id%>" data-menu="menu-portfolio-instant-1" data-height="230" class="caption caption-margins round-medium shadow-huge">
-    <div class="caption-top left-15 top-15">
-      <div class="caption-author-left">
-        <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-        <strong>Enabled</strong>
-        <span>2 Days Ago</span>
-      </div>
-    </div>
-    <div class="caption-top top-15 right-10">
-      <div class="clear"></div>
-    </div>
-    <div class="caption-bottom left-20 bottom-20">
-      <p class="color-white opacity-70 bottom-0 font-12"><%= Lecture.find(p.likable_id).address.truncate(50) %></p>
-      <h1 class="color-white bolder font-32"><%= Lecture.find(p.likable_id).title %></h1>
-    </div>
-    <div class="caption-overlay bg-black opacity-70"></div>
-    <% if Lecture.find(p.likable_id).image.present? %>
-      <%= image_tag(Lecture.find(p.likable_id).image.large.url)%>
-    <% else %>
-      <div class="caption-bg bg-18"></div>
-    <% end %>
-  </a>
-<% end %>
-<% else %>
-<div class="content caption round-medium shadow-huge" style='padding: 10px'>
-  기부한 강의가 없습니다
-</div>
-<% end %>
-<div class="divider divider-margins bottom-15"></div>
-<div class="content">
-<div class="content-title has-icon">
-  <h3>수강생들의 한줄</h3>
-  <span class="color-highlight"><%= current_user&.name %>님의 강의 수강생들의 강의평입니다.</span>
-  <%= link_to my_comment_path do %>
-  <i class="fas fa-plus bg-red2-dark shadow-huge"></i>
-<% end %>
-</div>
-</div>
+
 
 <% if @likes.present? %>
-<% @likes.last(3).each do |p| %>
-<% p.get_comments.each do |comment| %>
-  <div class="content caption round-medium shadow-huge" style='padding: 10px'>
-    <div class="review-5 container top-20">
-      <h3 class="font-600"><%= comment.get_lecture.title %></h3>
-      <h2><%= comment.user.name %></h2>
-      <div class="review-stars">
-        <i class="fa fa-star color-yellow1-dark"></i>
-        <i class="fa fa-star color-yellow1-dark"></i>
-        <i class="fa fa-star color-yellow1-dark"></i>
-        <i class="fa fa-star color-yellow1-dark"></i>
-        <i class="fa fa-star color-yellow1-dark"></i>
+  <% @likes.last(3).each do |p| %>
+    <% p.get_comments.each do |comment| %>
+      <div class="content caption round-medium shadow-huge" style='padding: 10px'>
+      <div class="review-5 container top-20">
+        <h3 class="font-600"><%= comment.get_lecture.title %></h3>
+        <h2><%= comment.user.name %></h2>
+        <div class="review-stars">
+          <i class="fa fa-star color-yellow1-dark"></i>
+          <i class="fa fa-star color-yellow1-dark"></i>
+          <i class="fa fa-star color-yellow1-dark"></i>
+          <i class="fa fa-star color-yellow1-dark"></i>
+          <i class="fa fa-star color-yellow1-dark"></i>
+        </div>
+        <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
+        <p>
+          <%= comment.content %>
+        </p>
+        </div>
       </div>
-      <img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-image shadow-huge">
-      <p>
-        <%= comment.content %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 <% else %>
-<div class="content caption round-medium shadow-huge" style='padding: 10px'>
+  <div class="content caption round-medium shadow-huge" style='padding: 10px'>
   댓글이 없습니다.
-</div>
+  </div>
 <% end %>
 
 <div class="divider divider-margins"></div>
-
 
 <!-- <div class="content"> <h1 class="center-text bottom-0 font-26">수강 등록 현황</h1><Br> <p class="center-text under-heading font-11 color-highlight bottom-30">각 강의별 수강자 현황입니다</p> <div class="chart-container"> <canvas class="chart" id="pie-chart"/>
 </div> </div> <div class="divider divider-margins"></div> -->

@@ -1,3 +1,4 @@
-console.log("create")
+console.log("create");
+$('.no-review').remove();
 $(".commentTextarea").val("");
 $(".commentList").prepend("<%= j render 'comments/comment', comment: @comment%>")

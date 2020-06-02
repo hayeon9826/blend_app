@@ -1,4 +1,5 @@
 <%= render 'shared/menu'%>
+<% if current_user&.email == "hayeon226@yonsei.ac.kr" %>
     <div class="divider divider-margins"></div>
     <div class="content bottom-0">
         <h6 class="uppercase">Navigation</h6>
@@ -91,5 +92,5 @@
             <div class="clear"></div>
         </div>
     </div>
-
+<% end %>
 <div class="menu-hider"></div>

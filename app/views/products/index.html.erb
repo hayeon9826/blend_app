@@ -4,25 +4,24 @@
   <p class="boxed-text-huge top-10 bottom-30">
     Blend는 HireChance의 맛있는 공정무역커피와 함께 난민 교육 환경 개선을 위해 가치를 더합니다.
   </p>
-  -<a href="#" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">hirechance X Blend</a>-
 </div>
 <div class="divider divider-margins"></div>
 
 <% @products&.each do |product| %>
-  <a href="<%= product_path(product.id)%>" data-menu="menu-instant-1" data-height="220" class="caption caption-margins round-medium shadow-huge">
-    <!-- <div class="caption-top left-15 top-15"> <div class="caption-author-left"> <img src="images/coffee_sample.png" data-src="images/preload-logo.png" class="preload-image"> <strong>Enabled</strong> <span>2 Days Ago</span> </div> </div> -->
-
+<div class="one-half" style="margin-bottom: 20px">
+  <a href="<%= product_path(product.id)%>" data-menu="menu-instant-1" data-height="150" class="caption caption-margins round-medium shadow-huge" style="margin-bottom: 10px">
     <div class="caption-top right-text top-10 right-15">
-      <span class="color-white ultrabold font-9">더보기 클릭</span>
+      <span class="color-white ultrabold font-9">더보기</span>
     </div>
-
     <div class="caption-bottom left-20 bottom-20">
-      <p class="color-white opacity-70 bottom-0 font-12"><%= product.sub_title %></p>
-      <h1 class="color-white bolder font-32"><%= product.title %></h1>
+      <!-- <p class="color-white opacity-70 bottom-0 font-12"><%= product.sub_title %></p> -->
     </div>
-    <div class="caption-overlay bg-black opacity-70"></div>
-    <div class="caption-bg bg-11" style="background-image: url('/images/coffee_sample.png')"></div>
+    <div class="caption-overlay bg-black opacity-10"></div>
+    <div class="caption-bg bg-11" style="background-image: url(<%= product.image.present? ? product.image.url : '/images/coffee_sample.png' %>)"></div>
   </a>
+  <span class="text-center font-15"><%= product.title %></span>
+  <span class="text-center font-14">₩<%= product.price %></span>
+</div>
 <% end %>
 
 <!-- <a href="#" data-menu="menu-instant-2" data-height="220" class="caption caption-margins round-medium shadow-huge">

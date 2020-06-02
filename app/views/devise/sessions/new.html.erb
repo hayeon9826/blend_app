@@ -12,7 +12,7 @@ body {
 
               <h1 class="color-black font-27 top-30">로그인</h1>
               <span class="under-heading color-highlight font-11 bold">이메일 및 비밀번호 입력</span>
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "external") do |f| %>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
               <div class="input-style input-style-1 input-required top-20">
                   <span>이메일</span>
@@ -25,9 +25,7 @@ body {
                   <%= f.password_field :password, autocomplete: "current-password", placeholder: "비밀번호"%>
               </div>
               <div class="clear"></div>
-              <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
-                <%= f.submit "로그인" , style: "color: white; background: #F6BB42"%>
-              </div>
+              <%= f.submit "로그인" , style: "color: white; background: #F6BB42; width: 100%", class: "back-button button button-full button-m round-small shadow-huge bg-highlight top-30" %>
               <% end %>
               <%= render "devise/shared/links" %>
           </div>

@@ -35,10 +35,7 @@
                     <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "비밀번호 확인" %>
                 </div>
                 <div class="clear"></div>
-
-                <div class="back-button button button-full button-m round-small shadow-huge bg-highlight top-30">
-                  <%= f.submit "회원가입" , style: "color: white; background: #F6BB42"%>
-                </div>
+                <%= f.submit "회원가입" , style: "color: white; background: #F6BB42; width: 100%", class: "back-button button button-full button-m round-small shadow-huge bg-highlight top-30" %>
                 <% end %>
                 <%= render "devise/shared/links" %>
             </div>

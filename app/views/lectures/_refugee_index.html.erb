@@ -1,348 +1,120 @@
 <div class="content center-text">
-    <h1>Search for the lectures you want to join</h1>
-    <span class="under-heading color-highlight font-10">Free Lectures for everyone!</span>
-    <p class="boxed-text-huge top-10 bottom-30">
+      <h1>Register</h1>
+      <span class="under-heading color-highlight font-10">Free Lectures for everyone!</span>
+      <p class="boxed-text-huge top-10 bottom-30">
         Hirechance helps refugees' education through coffe & social values.
-    </p>
-    <a href="#" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">About Hirechance</a>
-</div>
-<div class="divider divider-margins"></div>
-<%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
-<div class="row">
-  <i class="fa fa-search"></i>
-  <%= f.search_field :title_or_address_or_category_cont, placeholder: "Search for title, category or contents of the lectures", class: "col-9" %>
-  <i class="fa fa-times disabled color-red2-dark"></i>
-</div>
-<% end %>
-<% if @q&.title_or_address_or_category_cont.present? %>
-<div class="divider divider-margins"></div>
-<div class="content">
-    <div class="content-title has-icon">
-        <h3><%= @q.title_or_address_or_category_cont %> Searched</h3>
-        <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
-    </div>
-</div>
-<% end %>
-<% @lectures&.each do |p| %>
-<%= link_to lecture_path(p.id), class: "external" do %>
-  <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
-      <div class="caption-top left-15 top-15">
-          <div class="caption-author-left">
-              <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-              <strong><%= p.category %></strong>
-              <span><%= p.category %></span>
-          </div>
-      </div>
-
-      <div class="caption-top right-text top-10 right-15">
-          <span class="color-white ultrabold font-9">more</span>
-      </div>
-
-      <div class="caption-bottom left-20 bottom-20">
-          <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
-          <h1 class="color-white bolder font-32"><%= p.title %></h1>
-      </div>
-      <div class="caption-overlay bg-black opacity-70"></div>
-      <div class="caption-bg bg-12"></div>
-  </a>
-<% end %>
-<% end %>
-<div class="divider divider-margins"></div>
-<div class="content">
-    <div class="content-title has-icon">
-        <h3>Recent Updated</h3>
-        <span class="color-highlight">Recently updated lectures.</span>
-    </div>
-</div>
-<% @recent&.each do |p| %>
-  <%= link_to lecture_path(p.id), class: "external" do %>
-    <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
-        <div class="caption-top left-15 top-15">
-            <div class="caption-author-left">
-                <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-                <strong><%= p.category %></strong>
-                <span><%= p.category %></span>
-            </div>
-        </div>
-
-        <div class="caption-top right-text top-10 right-15">
-            <span class="color-white ultrabold font-9">more</span>
-        </div>
-
-        <div class="caption-bottom left-20 bottom-20">
-            <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
-            <h1 class="color-white bolder font-32"><%= p.title %></h1>
-        </div>
-        <div class="caption-overlay bg-black opacity-70"></div>
-        <% if p.image.present? %>
-          <%= image_tag(p.image.large.url)%>
-        <% elsif p.image_link.present?%>
-          <img class="caption-bg bg-12" src="<%= p.image_link%>">
-        <% else %>
-          <div class="caption-bg bg-12"></div>
-        <% end %>
-    </a>
-  <% end %>
-<% end %>
-
-<div class="divider divider-margins"></div>
-
-<div class="content">
-    <div class="content-title has-icon">
-        <h3>Language Lectures</h3>
-        <span class="color-highlight">Language lectures about English, Korean, Chinese, France and more</span>
-        <%= link_to lecture_search_path(lecture_id: @languages&.last&.category_before_type_cast) do %>
-          <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-        <% end %>
-    </div>
-</div>
-
-<div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
-  <% @languages&.each do |p| %>
-    <%= link_to lecture_path(p.id) do %>
-      <div class="slider-item">
-          <div data-height="320" class="caption round-small shadow-huge">
-              <div class="caption-top left-15 top-15">
-                  <h6 class="color-white opacity-60"><%= p.category %></h6>
-              </div>
-              <div class="caption-center left-15">
-                  <h1 class="color-white font-30 bottom-20 line-height-huge">
-                      <%= p.title %>
-                  </h1>
-                  <p class="color-white opacity-80 bottom-0">
-                      <%= p.address.truncate(50)%>
-                  </p>
-              </div>
-              <div class="caption-bottom bottom-20 left-15 right-15">
-                  <p class="bottom-0 font-10 color-white">70% Complete</p>
-                  <div class="progress-bar-wrapper"
-                       data-progress-complete="70"
-                       data-progress-height="3"
-                       data-progress-border="1"
-                       data-progress-bar-color="#FFF"
-                       data-progress-bar-background="rgba(255,255,255,0.2)">
-                      <div class="progress-bar"></div>
-                  </div>
-              </div>
-              <div class="caption-overlay bg-black opacity-70"></div>
-              <% if p.image.present? %>
-                <%= image_tag(p.image.large.url)%>
-              <% elsif p.image_link.present?%>
-                <img class="caption-bg bg-12" src="<%= p.image_link%>">
-              <% else %>
-                <div class="caption-bg bg-12"></div>
-              <% end %>
-          </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="divider divider-margins"></div>
-
-
-<div class="content">
-    <div class="content-title has-icon">
-        <h3>Business lectures</h3>
-        <span class="color-highlight">Real-world busienss lectures about cafe, restaurant and your own service</span>
-        <%= link_to lecture_search_path(lecture_id: @business&.last&.category_before_type_cast) do %>
-          <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-        <% end %>
-    </div>
-</div>
-
-<div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
-  <% @business&.each do |p| %>
-    <%= link_to lecture_path(p.id) do %>
-    <div class="caption round-medium shadow-huge bottom-10">
-        <div class="caption-bottom">
-            <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
-            <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
-        </div>
-        <div class="caption-overlay bg-gradient"></div>
-        <% if p.image.present? %>
-          <%= image_tag(p.image.large.url)%>
-        <% elsif p.image_link.present?%>
-          <img class="caption-image owl-laz" src="<%= p.image_link%>">
-        <% else %>
-          <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
-        <% end %>
-    </div>
-  <% end %>
-<% end %>
-</div>
-
-<div class="divider divider-margins"></div>
-
-<div class="content">
-    <div class="content-title has-icon">
-        <h3>Career Lecture</h3>
-        <span class="color-highlight">How to get careers in Korea?</span>
-        <%= link_to lecture_search_path(lecture_id: @work&.last&.category_before_type_cast) do %>
-          <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-        <% end %>
-    </div>
-</div>
-
-<div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
-  <% @work&.each do |p| %>
-    <%= link_to lecture_path(p.id) do %>
-      <div class="slider-item">
-          <div data-height="320" class="caption round-small shadow-huge">
-              <div class="caption-top left-15 top-15">
-                  <h6 class="color-white opacity-60"><%= p.category %></h6>
-              </div>
-              <div class="caption-center left-15">
-                  <h1 class="color-white font-30 bottom-20 line-height-huge">
-                      <%= p.title %>
-                  </h1>
-                  <p class="color-white opacity-80 bottom-0">
-                      <%= p.address.truncate(50)%>
-                  </p>
-              </div>
-              <div class="caption-bottom bottom-20 left-15 right-15">
-                  <p class="bottom-0 font-10 color-white">70% Complete</p>
-                  <div class="progress-bar-wrapper"
-                       data-progress-complete="70"
-                       data-progress-height="3"
-                       data-progress-border="1"
-                       data-progress-bar-color="#FFF"
-                       data-progress-bar-background="rgba(255,255,255,0.2)">
-                      <div class="progress-bar"></div>
-                  </div>
-              </div>
-              <div class="caption-overlay bg-black opacity-70"></div>
-              <% if p.image.present? %>
-                <%= image_tag(p.image.large.url)%>
-              <% elsif p.image_link.present?%>
-                <img class="caption-bg bg-12" src="<%= p.image_link%>">
-              <% else %>
-                <div class="caption-bg bg-12"></div>
-              <% end %>
-          </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="divider divider-margins"></div>
-
-
-  <div class="content">
-    <div class="content-title has-icon">
-        <h3>Programming Lectures</h3>
-        <span class="color-highlight"> Web/app development, data analysis and database education</span>
-        <%= link_to lecture_search_path(lecture_id: @codding&.last&.category_before_type_cast) do %>
-          <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-        <% end %>
-    </div>
+      </p>
   </div>
-
-  <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
-    <% @codding&.each do |p| %>
-      <%= link_to lecture_path(p.id) do %>
-      <div class="caption round-medium shadow-huge bottom-10">
-          <div class="caption-bottom">
-              <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
-              <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
-          </div>
-          <div class="caption-overlay bg-gradient"></div>
-          <% if p.image.present? %>
-            <%= image_tag(p.image.large.url)%>
-          <% elsif p.image_link.present?%>
-            <img class="caption-image owl-laz" src="<%= p.image_link%>">
-          <% else %>
-            <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
-          <% end %>
-      </div>
-    <% end %>
-  <% end %>
-  </div>
-
   <div class="divider divider-margins"></div>
-
   <div class="content">
       <div class="content-title has-icon">
-          <h3>Cultural lectures</h3>
-          <span class="color-highlight">Experience the worldwide culture</span>
-          <%= link_to lecture_search_path(lecture_id: @culture.last.category_before_type_cast) do %>
-            <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-          <% end %>
+          <h3>Most popular</h3>
+          <span class="color-highlight">The most popular lectures</span>
       </div>
   </div>
-
-  <div class="visible-slider-small double-slider owl-carousel owl-no-dots bottom-0">
-    <% @culture&.each do |p| %>
-      <%= link_to lecture_path(p.id) do %>
-        <div class="slider-item">
-            <div data-height="320" class="caption round-small shadow-huge">
-                <div class="caption-top left-15 top-15">
-                    <h6 class="color-white opacity-60"><%= p.category %></h6>
-                </div>
-                <div class="caption-center left-15">
-                    <h1 class="color-white font-30 bottom-20 line-height-huge">
-                        <%= p.title %>
-                    </h1>
-                    <p class="color-white opacity-80 bottom-0">
-                        <%= p.address.truncate(50)%>
-                    </p>
-                </div>
-                <div class="caption-bottom bottom-20 left-15 right-15">
-                    <p class="bottom-0 font-10 color-white">70% Complete</p>
-                    <div class="progress-bar-wrapper"
-                         data-progress-complete="70"
-                         data-progress-height="3"
-                         data-progress-border="1"
-                         data-progress-bar-color="#FFF"
-                         data-progress-bar-background="rgba(255,255,255,0.2)">
-                        <div class="progress-bar"></div>
-                    </div>
-                </div>
-                <div class="caption-overlay bg-black opacity-70"></div>
-                <% if p.image.present? %>
-                  <%= image_tag(p.image.large.url)%>
-                <% elsif p.image_link.present?%>
-                  <img class="caption-bg bg-12" src="<%= p.image_link%>">
-                <% else %>
-                  <div class="caption-bg bg-12"></div>
-                <% end %>
-            </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="divider divider-margins"></div>
-
-  <div class="content">
-    <div class="content-title has-icon">
-        <h3>Content Lectures</h3>
-        <span class="color-highlight">Learn how to create youtube videos, sns card news and webtoons</span>
-        <%= link_to lecture_search_path(lecture_id: @content.last.category_before_type_cast) do %>
-          <i class="fas fa-plus bg-blue2-dark shadow-huge"></i>
-        <% end %>
-    </div>
-  </div>
-
   <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
-    <% @content&.each do |p| %>
-      <%= link_to lecture_path(p.id) do %>
-      <div class="caption round-medium shadow-huge bottom-10">
+    <% @recent&.each do |p| %>
+        <a href="/lectures/<%= p.id %>" class="external caption round-medium shadow-huge bottom-10">
           <div class="caption-bottom">
               <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
-              <p class="under-heading color-white center-text bottom-20"><%= p.address.truncate(40)%></p>
+              <p class="under-heading color-white center-text bottom-20"><%= p.category %></p>
           </div>
           <div class="caption-overlay bg-gradient"></div>
-          <% if p.image.present? %>
-            <%= image_tag(p.image.large.url)%>
-          <% elsif p.image_link.present?%>
-            <img class="caption-image owl-laz" src="<%= p.image_link%>">
-          <% else %>
-            <img class="caption-image owl-lazy" data-src="images/pictures/18.jpg">
-          <% end %>
+          <img class="caption-image owl-lazy" data-src="<%= p.image.large.url.present? ? p.image.large.url : 'images/pictures/18.jpg' %> ">
+        </a>
+    <% end %>
+  </div>
+  <div class="divider divider-margins"></div>
+  <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
+  <div class="row">
+    <i class="fa fa-search"></i>
+    <%= f.search_field :title_or_address_or_category_cont, placeholder: "강의 제목, 내용, 카테고리를 검색하세요", class: "col-9" %>
+    <i class="fa fa-times disabled color-red2-dark"></i>
+  </div>
+  <% end %>
+  <div class="content bottom-0">
+    <div class="tab-controls tabs-round tab-animated tabs-small tabs-rounded shadow-large"
+         data-tab-items="4"
+         data-tab-active="bg-highlight color-white">
+        <a href="/lectures/0/search" data-tab-active data-tab="tab-1">Language</a>
+        <a href="/lectures/1/search" data-tab="tab-2">Business</a>
+        <a href="/lectures/2/search" data-tab="tab-2">Career</a>
+        <a href="/lectures/3/search" data-tab="tab-3">Programming</a>
+    </div><br><br>
+  </div>
+  <% if @q&.title_or_address_or_category_cont.present? %>
+  <div class="divider divider-margins"></div>
+  <div class="content">
+      <div class="content-title has-icon">
+          <h3>Searched: <%= @q.title_or_address_or_category_cont %></h3>
+          <i class="far fa-clock bg-blue2-dark shadow-huge"></i>
       </div>
+  </div>
+  <% end %>
+  <% @lectures&.each do |p| %>
+    <%= link_to lecture_path(p.id), class: "external" do %>
+      <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+          <div class="caption-top left-15 top-15">
+              <div class="caption-author-left">
+                  <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
+                  <strong><%= p.category %></strong>
+                  <span><%= p.category %></span>
+              </div>
+          </div>
+
+          <div class="caption-top right-text top-10 right-15">
+              <span class="color-white ultrabold font-9">More</span>
+          </div>
+
+          <div class="caption-bottom left-20 bottom-20">
+              <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
+              <h1 class="color-white bolder font-32"><%= p.title %></h1>
+          </div>
+          <div class="caption-overlay bg-black opacity-70"></div>
+          <div class="caption-bg bg-12"></div>
+      </a>
     <% end %>
   <% end %>
-  </div>
-
   <div class="divider divider-margins"></div>
+  <div class="content">
+      <div class="content-title has-icon">
+          <h3>Search for the lectures</h3>
+          <span class="color-highlight">Select the lecture, and enjoy</span>
+      </div>
+  </div>
+  <div class="content bottom-0">
+    <% @all_lectures.each do |p| %>
+    <%= link_to lecture_path(p.id), class: "external" do %>
+      <div class="clear">
+          <div class="one-half small-half">
+              <div data-height="140" class="caption">
+                  <div class="caption-image">
+                    <% if p.image.present? %>
+                      <img src="<%= p.image.url %>" class="responsive-image round-medium">
+                    <% else %>
+                      <img src="<%= p.image_link.present? ? p.image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+                    <% end %>
+                  </div>
+              </div>
+          </div>
+          <div class="one-half large-half last-column">
+              <h5 class="color-theme"><%= p.title %></h5>
+              <span class="under-heading font-10 color-highlight"><%= p.category %></span>
+              <p class="font-12 bottom-10">
+                  <%= p.address.truncate(100) %>
+              </p>
+              <div class="one-half">
+                  <a href="#" class="font-10"><i class="fa fa-shopping-cart right-10"></i>기부하기</a>
+              </div>
+              <div class="one-half last-column">
+                <!-- <a href="#" class="button shadow-huge button-xs button-circle bg-red2-light">기부</a> -->
+                  <a href="#" class="font-10"><i class="fa fa-heart color-red2-dark right-10"></i>찜하기</a>
+              </div>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div><Br><Br>
+
+
+    <div class="divider divider-margins"></div>

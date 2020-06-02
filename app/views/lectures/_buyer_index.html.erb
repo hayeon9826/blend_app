@@ -1,10 +1,28 @@
 <div class="content center-text">
-    <h1>난민 학생에게 여러분은<Br>어떤 강의를 선물하고 싶으신가요?</h1>
+    <h1>기부</h1>
     <span class="under-heading color-highlight font-10">당신의 작은 소비로 난민의 인생을 바꿀 수 있습니다</span>
     <p class="boxed-text-huge top-10 bottom-30">
-        난민 학생들이 수강신청한 강의들을 확인하고, 어떤 강의들이 난민에게 가장 필요할지 선택해주세요. 그들에게 필요한 가치와 당신이 추구하는 가치를 블렌딩하세요.
+      난민 학생들이 수강신청한 강의를 확인하고, 어떤 강의들이 난민에게 가장 필요할지 선택해주세요.
     </p>
-    <!-- <a href="/subscription" class="button button-m button-center-large bg-highlight button-circle shadow-huge bottom-30">정기구독 바로가기</a> -->
+</div>
+<div class="divider divider-margins"></div>
+<div class="content">
+    <div class="content-title has-icon">
+        <h3>인기있는 강의</h3>
+        <span class="color-highlight">가장 많은 학생들이 수강을 기다리는 강의입니다</span>
+    </div>
+</div>
+<div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
+  <% @recent&.each do |p| %>
+      <a href="/lectures/<%= p.id %>" class="external caption round-medium shadow-huge bottom-10">
+        <div class="caption-bottom">
+            <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
+            <p class="under-heading color-white center-text bottom-20"><%= p.category %></p>
+        </div>
+        <div class="caption-overlay bg-gradient"></div>
+        <img class="caption-image owl-lazy" data-src="<%= p.image.large.url.present? ? p.image.large.url : 'images/pictures/18.jpg' %> ">
+      </a>
+  <% end %>
 </div>
 <div class="divider divider-margins"></div>
 <%= search_form_for @q, class: "search-box search-color content round-tiny bottom-30" do |f| %>
@@ -34,37 +52,6 @@
 </div>
 <% end %>
 <% @lectures&.each do |p| %>
-<%= link_to lecture_path(p.id), class: "external" do %>
-  <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
-      <div class="caption-top left-15 top-15">
-          <div class="caption-author-left">
-              <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
-              <strong><%= p.category %></strong>
-              <span><%= p.category %></span>
-          </div>
-      </div>
-
-      <div class="caption-top right-text top-10 right-15">
-          <span class="color-white ultrabold font-9">더보기</span>
-      </div>
-
-      <div class="caption-bottom left-20 bottom-20">
-          <p class="color-white opacity-70 bottom-0 font-12"><%= p.address.truncate(50)%></p>
-          <h1 class="color-white bolder font-32"><%= p.title %></h1>
-      </div>
-      <div class="caption-overlay bg-black opacity-70"></div>
-      <div class="caption-bg bg-12"></div>
-  </a>
-<% end %>
-<% end %>
-<div class="divider divider-margins"></div>
-<div class="content">
-    <div class="content-title has-icon">
-        <h3>수강신청 가장 많은 강의</h3>
-        <span class="color-highlight">가장 많은 학생들이 수강을 기다리는 강의입니다</span>
-    </div>
-</div>
-<% @recent&.each do |p| %>
   <%= link_to lecture_path(p.id), class: "external" do %>
     <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
         <div class="caption-top left-15 top-15">
@@ -84,17 +71,10 @@
             <h1 class="color-white bolder font-32"><%= p.title %></h1>
         </div>
         <div class="caption-overlay bg-black opacity-70"></div>
-        <% if p.image.present? %>
-          <%= image_tag(p.image.large.url)%>
-        <% elsif p.image_link.present?%>
-          <img class="caption-bg bg-12" src="<%= p.image_link%>">
-        <% else %>
-          <div class="caption-bg bg-12"></div>
-        <% end %>
+        <div class="caption-bg bg-12"></div>
     </a>
   <% end %>
 <% end %>
-
 <div class="divider divider-margins"></div>
 <div class="content">
     <div class="content-title has-icon">
@@ -105,33 +85,33 @@
 <div class="content bottom-0">
   <% @all_lectures.each do |p| %>
   <%= link_to lecture_path(p.id), class: "external" do %>
-      <div class="clear">
-          <div class="one-half small-half">
-              <div data-height="140" class="caption">
-                  <div class="caption-image">
-                    <% if p.image.present? %>
-                      <img src="<%= p.image.url %>" class="responsive-image round-medium">
-                    <% else %>
-                      <img src="<%= p.image_link.present? ? p.image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
-                    <% end %>
-                  </div>
-              </div>
-          </div>
-          <div class="one-half large-half last-column">
-              <h5 class="color-theme"><%= p.title %></h5>
-              <span class="under-heading font-10 color-highlight"><%= p.category %></span>
-              <p class="font-12 bottom-10">
-                  <%= p.address.truncate(100) %>
-              </p>
-              <div class="one-half">
-                  <a href="#" class="font-10"><i class="fa fa-shopping-cart right-10"></i>기부하기</a>
-              </div>
-              <div class="one-half last-column">
-                <!-- <a href="#" class="button shadow-huge button-xs button-circle bg-red2-light">기부</a> -->
-                  <a href="#" class="font-10"><i class="fa fa-heart color-red2-dark right-10"></i>찜하기</a>
-              </div>
-          </div>
-      </div>
+    <div class="clear">
+        <div class="one-half small-half">
+            <div data-height="140" class="caption">
+                <div class="caption-image">
+                  <% if p.image.present? %>
+                    <img src="<%= p.image.url %>" class="responsive-image round-medium">
+                  <% else %>
+                    <img src="<%= p.image_link.present? ? p.image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+                  <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="one-half large-half last-column">
+            <h5 class="color-theme"><%= p.title %></h5>
+            <span class="under-heading font-10 color-highlight"><%= p.category %></span>
+            <p class="font-12 bottom-10">
+                <%= p.address.truncate(100) %>
+            </p>
+            <div class="one-half">
+                <a href="#" class="font-10"><i class="fa fa-shopping-cart right-10"></i>기부하기</a>
+            </div>
+            <div class="one-half last-column">
+              <!-- <a href="#" class="button shadow-huge button-xs button-circle bg-red2-light">기부</a> -->
+                <a href="#" class="font-10"><i class="fa fa-heart color-red2-dark right-10"></i>찜하기</a>
+            </div>
+        </div>
+    </div>
     <% end %>
   <% end %>
 </div><Br><Br>
