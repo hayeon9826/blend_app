@@ -1,0 +1,12 @@
+<div class="cover-slider owl-carousel bg-white">
+  <div data-height="cover" class="caption">
+    <div class="caption-center" style='top: 35%'>
+      <p class="center-text font-20 bottom-15" style="color:black">
+        <img src="/images/congrats.gif" style="width: 200px; margin-bottom: 50px">
+        <span class="bolder">Successfully Registered <Br><%= @lecture.title %></span>!<Br><br><BR>
+        <a href="<%= lecture_path(@lecture.id)%>" class="external button button-m bg-highlight round-small button-center-small shadow-large" style="width: 100px">Confirm</a><br>
+    </div>
+    <!-- <div class="caption-overlay bg-black opacity-25"></div> -->
+    <div class="caption-bg" style="background-color: white;"></div>
+  </div>
+</div>

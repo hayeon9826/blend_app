@@ -14,14 +14,14 @@
   </div>
   <div class="single-slider visible-slider2-small owl-carousel owl-dots-under bottom-10">
     <% @recent&.each do |p| %>
-        <a href="/lectures/<%= p.id %>" class="external caption round-medium shadow-huge bottom-10">
-          <div class="caption-bottom">
-              <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
-              <p class="under-heading color-white center-text bottom-20"><%= p.category %></p>
-          </div>
-          <div class="caption-overlay bg-gradient"></div>
-          <img class="caption-image owl-lazy" data-src="<%= p.image.large.url.present? ? p.image.large.url : 'images/pictures/18.jpg' %> ">
-        </a>
+      <%= link_to lecture_path(p.id), class: "caption round-medium shadow-huge bottom-10" do %>
+        <div class="caption-bottom">
+            <h2 class="color-white center-text uppercase ultrabold"><%= p.title %></h2>
+            <p class="under-heading color-white center-text bottom-20"><%= p.category %></p>
+        </div>
+        <div class="caption-overlay bg-gradient"></div>
+        <img class="caption-image owl-lazy" data-src="<%= p.image.large.url.present? ? p.image.large.url : 'images/pictures/18.jpg' %> ">
+      <% end %>
     <% end %>
   </div>
   <div class="divider divider-margins"></div>
@@ -52,8 +52,8 @@
   </div>
   <% end %>
   <% @lectures&.each do |p| %>
-    <%= link_to lecture_path(p.id), class: "external" do %>
-      <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="external caption caption-margins round-medium shadow-huge">
+    <%= link_to lecture_path(p.id) do %>
+      <a href="/lectures/<%= p.id %>" data-menu="menu-instant-3" data-height="220" class="caption caption-margins round-medium shadow-huge">
           <div class="caption-top left-15 top-15">
               <div class="caption-author-left">
                   <img src="images/empty.png" data-src="images/preload-logo.png" class="preload-image">
@@ -84,7 +84,7 @@
   </div>
   <div class="content bottom-0">
     <% @all_lectures.each do |p| %>
-    <%= link_to lecture_path(p.id), class: "external" do %>
+    <%= link_to lecture_path(p.id) do %>
       <div class="clear">
           <div class="one-half small-half">
               <div data-height="140" class="caption">

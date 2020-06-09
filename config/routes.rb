@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     member do
       get :toggle
     end
+    collection do
+      get :success
+    end
   end
 
   resources :comments
