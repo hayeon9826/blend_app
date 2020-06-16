@@ -28,40 +28,36 @@
        data-tab-items="4"
        data-tab-active="bg-highlight color-white">
       <a href="#" data-filter="all" data-tab-active data-tab="tab-2">All</a>
-      <a href="#언어" data-filter="0" data-tab="tab-1">Language</a>
-      <a href="#창업교육" data-filter="1" data-tab="tab-2">Business</a>
-      <a href="#코딩" data-filter="3" data-tab="tab-3">Programming</a>
-  </div><br><br>
+      <a href="#" data-filter="0" data-tab="tab-1">Language</a>
+      <a href="#" data-filter="1" data-tab="tab-2">Business</a>
+      <a href="#" data-filter="3" data-tab="tab-3">Programming</a>
+  </div><br><br><Br>
 </div>
 <div class="content bottom-0">
 <% if @likes.present? %>
   <% @likes.last(3).each do |p| %>
-    <a class="clear" data-lightbox="gallery-filter-1" data-category="<%= Lecture.find(p.likable_id).category_before_type_cast.to_i %>" id="<%= Lecture.find(p.likable_id).category %>">
-        <div class="one-half small-half">
-            <div data-height="140" class="caption">
-                <div class="caption-image">
-                  <% if Lecture.find(p.likable_id).image.present? %>
-                    <img src="<%= Lecture.find(p.likable_id).image.url %>" class="responsive-image round-medium">
-                  <% else %>
-                    <img src="<%= Lecture.find(p.likable_id).image_link.present? ? Lecture.find(p.likable_id).image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
-                  <% end %>
-                </div>
-            </div>
+    <a class="clear" href="<%= lecture_path(id: Lecture.find(p.likable_id)) %>" data-lightbox="gallery-filter-1" data-category="<%= Lecture.find(p.likable_id).category_before_type_cast.to_i %>" id="<%= Lecture.find(p.likable_id).category %>">
+      <div class="one-half small-half">
+          <div data-height="140" class="caption">
+              <div class="caption-image">
+                <% if Lecture.find(p.likable_id).image.present? %>
+                  <img src="<%= Lecture.find(p.likable_id).image.url %>" class="responsive-image round-medium">
+                <% else %>
+                  <img src="<%= Lecture.find(p.likable_id).image_link.present? ? Lecture.find(p.likable_id).image_link : "images/pictures/28s.jpg"%>" class="responsive-image round-medium">
+                <% end %>
+              </div>
+          </div>
+      </div>
+      <div class="one-half large-half last-column">
+        <h5 class="color-theme"><%= Lecture.find(p.likable_id).title %></h5>
+        <span class="under-heading font-10 color-highlight"><%= Lecture.find(p.likable_id).category %></span>
+        <p class="font-12 bottom-10">
+            <%= Lecture.find(p.likable_id).address.truncate(30) %>
+        </p>
+        <div class="one-half">
+          <a href="<%= new_comment_path(lecture_id: Lecture.find(p.likable_id).id) %>" class="button shadow-huge button-xs button-circle bg-yellow1-dark">Review</a>
         </div>
-        <div class="one-half large-half last-column">
-            <h5 class="color-theme"><%= Lecture.find(p.likable_id).title %></h5>
-            <span class="under-heading font-10 color-highlight"><%= Lecture.find(p.likable_id).category %></span>
-            <p class="font-12 bottom-10">
-                <%= Lecture.find(p.likable_id).address.truncate(100) %>
-            </p>
-            <div class="one-half">
-                <a href="#" class="font-10"><i class="fa fa-shopping-cart right-10"></i>기부하기</a>
-            </div>
-            <div class="one-half last-column">
-              <!-- <a href="#" class="button shadow-huge button-xs button-circle bg-red2-light">기부</a> -->
-                <a href="#" class="font-10"><i class="fa fa-heart color-red2-dark right-10"></i>찜하기</a>
-            </div>
-        </div>
+      </div>
     </a>
   <% end %>
 <% else %>

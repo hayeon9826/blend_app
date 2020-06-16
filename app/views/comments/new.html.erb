@@ -1,0 +1,22 @@
+<div class="cover-slider owl-carousel bg-white">
+  <div data-height="cover" class="caption">
+    <div class="caption-center" style='top: 35%'>
+      <h2 class="center-text font-20 bottom-15" style="color: black">Your Review</h2><Br><Br><br>
+      <p class="center-text font-20 bottom-15" style="color:black">
+        <img src="<%= @lecture&.image.present? ? @lecture.image.url :  "/images/pictures/28s.jpg"%>" style="width: 100px; margin-bottom: 10px">
+        <span class="bolder"><%= @lecture.title %></span><Br><br>
+      </p>
+      <div class="input-style input-style-1 input-required top-20" style="padding: 20px;">
+        <%= form_for Comment.new, class: "external", remote: true do |f| %>
+          <%= f.text_field :content, autofocus: true, required: true, placeholder: "Write your review for the lecture" %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :commentable_type, value: "Lecture" %>
+          <%= f.hidden_field :commentable_id, value: @lecture.id %>
+          <%= f.submit "Submit", style: "color: white; background: #F6BB42; width: 100%", class: "back-button button button-full button-m round-small shadow-huge bg-highlight top-30" %>
+        <% end %>
+      </div>
+    </div>
+    <!-- <div class="caption-overlay bg-black opacity-25"></div> -->
+    <div class="caption-bg" style="background-color: white;"></div>
+  </div>
+</div>
