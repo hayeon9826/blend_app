@@ -31,7 +31,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'jquery-rails'
 gem 'devise-i18n'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'pg'
 gem "faker"
 gem 'active_skin'
